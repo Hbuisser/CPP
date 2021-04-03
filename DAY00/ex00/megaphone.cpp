@@ -3,8 +3,9 @@
 #include <iostream>
 #include <cstdio>
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
+    int i;
     int j = 1;
     int k = 0;
     char *str;
@@ -19,7 +20,7 @@ int main(int argc, char** argv)
         while (argv[j] != NULL)
         {
             str = argv[j];
-            for (int i=0; i<(int)strlen(argv[j]); i++)
+            for (i=0; i < strlen(argv[j]); i++)
             {
                 str[k] = toupper(argv[j][i]);
                 k++;
