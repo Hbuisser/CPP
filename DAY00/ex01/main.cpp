@@ -1,17 +1,11 @@
-#include "contact.hpp"
-
-void add_contact(Contact)
-{
-    std::cout << "What's the first name ?" << std::endl;
-    std::getline(std::cin, first_name);
-}
+#include "Contact.hpp"
+#include "Phonebook.hpp"
 
 int main()
 {
+    int             contactNbr = 0;
     std::string     cmd;
-    //Contact         phoneBook[8];
-    PhoneBook       myPhonebook;
-
+    Phonebook       myPhonebook;
 
     while (1)
     {
@@ -21,7 +15,14 @@ int main()
             cmd[i] = std::toupper(cmd[i]);
         if (cmd == "ADD")
         {
-            myPhonebook.addContact();
+            if (contactNbr > 7)
+                std::cout << "Your Phonebook is full!" << std::endl;
+            myPhonebook.createContact(contactNbr);
+            contactNbr++;
+        }
+        else if (cmd == "SEARCH")
+        {
+            myPhonebook.searchContact(contactNbr);
         }
     }
 

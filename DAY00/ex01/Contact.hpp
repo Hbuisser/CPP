@@ -13,6 +13,8 @@ class Contact
     public:
         Contact();
         ~Contact();
+        void            setFirstName();
+        void            setLastName();
     
     private:
         std::string     m_firstName;
