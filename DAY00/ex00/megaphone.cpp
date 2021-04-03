@@ -20,7 +20,7 @@ int main(int argc, char **argv)
         while (argv[j] != NULL)
         {
             str = argv[j];
-            for (i=0; i < strlen(argv[j]); i++)
+            for (i=0; i < (int)strlen(argv[j]); i++)
             {
                 str[k] = toupper(argv[j][i]);
                 k++;

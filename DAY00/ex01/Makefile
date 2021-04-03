@@ -1,6 +1,11 @@
-NAME = PHONEBOOK
-SRCS = main.cpp ClassContact.cpp
-FLAGS = -Wall -Wextra -Werror
+NAME = phonebook
+
+SRCS = main.cpp \
+		Phonebook.cpp \
+		Contact.cpp \
+OBJS = ${SRCS:.cpp=.o}
+
+FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 CC = clang++
 
@@ -10,10 +15,9 @@ $(NAME) :
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean :
-	$(RM) $(NAME)
+	$(RM) $(OBJS)
 
 fclean : clean
+	$(RM) $(NAME)
 
 re : fclean all
-
-.PHONY: clean fclean re all

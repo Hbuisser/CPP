@@ -1,21 +1,26 @@
 NAME = megaphone
 
 SRC = megaphone.cpp
-FLAGS = -Wall -Wextra -Werror -std=c++98
+OBJS = ${SRC:.cpp=.o}
 
-OBJS = ${SRCS:.c=.o}
+FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 CC = clang++
 
-all : $(NAME)
+all: $(NAME)
 
 $(NAME) : $(OBJS)
 	$(CC) $(FLAGS) $(SRC) -o $(NAME)
 
-clean :
+clean:
 	$(RM) $(OBJS)
 
-fclean : clean
+fclean: clean
 	$(RM) $(NAME)
 
-re : fclean all
+re: fclean all
+
+test:
+	./megaphone "shhhhh... I think the students are asleep..."
+	./megaphone Damnit " ! " "Sorry students, I thought this thing was off."
+	./megaphone
