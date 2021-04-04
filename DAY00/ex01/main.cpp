@@ -15,9 +15,7 @@ int main()
         if (cmd == "ADD")
             myPhonebook.createContact();
         else if (cmd == "SEARCH")
-        {
             myPhonebook.searchContact();
-        }
         else if (cmd == "EXIT")
         {
             std::cout << "Goodbye!" << std::endl;

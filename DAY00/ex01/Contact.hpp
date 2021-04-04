@@ -26,10 +26,30 @@ class Contact
     public:
         Contact();
         ~Contact();
+    
         void            setFirstName();
         void            setLastName();
+        void            setNickname();
+        void            setLogin();
+        void            setPostalAddress();
+        void            setEmail();
+        void            setPhoneNumber();
+        void            setBirthday();
+        void            setFavoriteMeal();
+        void            setUnderwearColor();
+        void            setDarkestSecret();
+
         std::string     getFirstName() const;
         std::string     getLastName() const;
+        std::string     getNickname() const;
+        std::string     getLogin() const;
+        std::string     getPostalAddress() const;
+        std::string     getEmail() const;
+        std::string     getPhoneNumber() const;
+        std::string     getBirthday() const;
+        std::string     getFavoriteMeal() const;
+        std::string     getUnderwearColor() const;
+        std::string     getDarkestSecret() const;
 };
 
 #endif

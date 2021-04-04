@@ -24,6 +24,15 @@ void Phonebook::createContact()
     }
     m_contacts[m_contactNbr].setFirstName();
     m_contacts[m_contactNbr].setLastName();
+    m_contacts[m_contactNbr].setNickname();
+    m_contacts[m_contactNbr].setLogin();
+    m_contacts[m_contactNbr].setPostalAddress();
+    m_contacts[m_contactNbr].setEmail();
+    m_contacts[m_contactNbr].setPhoneNumber();
+    m_contacts[m_contactNbr].setBirthday();
+    m_contacts[m_contactNbr].setFavoriteMeal();
+    m_contacts[m_contactNbr].setUnderwearColor();
+    m_contacts[m_contactNbr].setDarkestSecret();
 }
 
 void Phonebook::showContacts()
@@ -49,6 +58,15 @@ void Phonebook::showContact(int inputUser)
     }
     std::cout << "First name : " << m_contacts[inputUser - 1].getFirstName() << std::endl;
     std::cout << "Last name : " << m_contacts[inputUser - 1].getLastName() << std::endl;
+    std::cout << "Nickname : " << m_contacts[inputUser - 1].getNickname() << std::endl;
+    std::cout << "Login : " << m_contacts[inputUser - 1].getLogin() << std::endl;
+    std::cout << "Postal address : " << m_contacts[inputUser - 1].getPostalAddress() << std::endl;
+    std::cout << "Email : " << m_contacts[inputUser - 1].getEmail() << std::endl;
+    std::cout << "Phone number : " << m_contacts[inputUser - 1].getPhoneNumber() << std::endl;
+    std::cout << "Phone number : " << m_contacts[inputUser - 1].getBirthday() << std::endl;
+    std::cout << "Favorite meal : " << m_contacts[inputUser - 1].getFavoriteMeal() << std::endl;
+    std::cout << "Underwear color : " << m_contacts[inputUser - 1].getUnderwearColor() << std::endl;
+    std::cout << "Darkest secret : " << m_contacts[inputUser - 1].getDarkestSecret() << std::endl;
 }
 
 bool Phonebook::isNumeric(std::string str) 
