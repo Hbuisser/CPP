@@ -39,3 +39,6 @@ void Contact::setLastName()
     }
     m_lastName = name;
 }
+
+std::string Contact::getFirstName() const { return m_firstName; }
+std::string Contact::getLastName() const { return m_lastName; }

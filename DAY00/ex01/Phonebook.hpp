@@ -16,16 +16,20 @@
 
 class Phonebook
 {
-    public:
-        Phonebook();
-        ~Phonebook();
-        void createContact(int contactNbr);
-        void searchContact(int contactNbr);
-    
     private:
         // Le « m » signifiant « membre »
         // Il est impossible d'initialiser les attributs ici (sauf les classes). Cela doit être fait via un constructeur
         Contact     m_contacts[8];
+        int         m_contactNbr;
+    
+    public:
+        Phonebook();
+        ~Phonebook();
+        void createContact();
+        void searchContact();
+        void showContacts();
+        void showContact(int inputUser);
+        bool isNumeric(std::string str);
 };
 
 #endif

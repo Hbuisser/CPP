@@ -10,12 +10,6 @@
 
 class Contact
 {
-    public:
-        Contact();
-        ~Contact();
-        void            setFirstName();
-        void            setLastName();
-    
     private:
         std::string     m_firstName;
         std::string     m_lastName;
@@ -28,6 +22,14 @@ class Contact
         std::string     m_favoriteMeal;
         std::string     m_underwearColor;
         std::string     m_darkestSecret;
+    
+    public:
+        Contact();
+        ~Contact();
+        void            setFirstName();
+        void            setLastName();
+        std::string     getFirstName() const;
+        std::string     getLastName() const;
 };
 
 #endif

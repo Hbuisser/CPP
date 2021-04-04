@@ -3,7 +3,6 @@
 
 int main()
 {
-    int             contactNbr = 0;
     std::string     cmd;
     Phonebook       myPhonebook;
 
@@ -14,17 +13,16 @@ int main()
         for (int i = 0; cmd[i] != 0; i++)
             cmd[i] = std::toupper(cmd[i]);
         if (cmd == "ADD")
-        {
-            if (contactNbr > 7)
-                std::cout << "Your Phonebook is full!" << std::endl;
-            myPhonebook.createContact(contactNbr);
-            contactNbr++;
-        }
+            myPhonebook.createContact();
         else if (cmd == "SEARCH")
         {
-            myPhonebook.searchContact(contactNbr);
+            myPhonebook.searchContact();
+        }
+        else if (cmd == "EXIT")
+        {
+            std::cout << "Goodbye!" << std::endl;
+            break ;
         }
     }
-
     return (0);
 }
