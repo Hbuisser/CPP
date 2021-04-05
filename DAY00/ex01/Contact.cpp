@@ -83,13 +83,26 @@ void Contact::setPostalAddress()
     m_postalAddress = name;
 }
 
+bool Contact::is_email(std::string str)
+{
+    unsigned long i = 0;
+
+    while (i < str.length())
+    {
+        if (str[i] == '@')
+            return (true);
+        i++;
+    }
+    return (false);
+}
+
 void Contact::setEmail()
 {
     std::string name;
 
     std::cout << "Email: ";
     std::getline(std::cin, name);
-    while (name == "")
+    while (name == "" || !is_email(name))
     {
         std::cout << "Wrong input" << std::endl;
         std::cout << "Email: ";

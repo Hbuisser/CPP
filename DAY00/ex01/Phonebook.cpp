@@ -35,6 +35,11 @@ void Phonebook::createContact()
     m_contacts[m_contactNbr].setDarkestSecret();
 }
 
+// Chaque colonne doit avoir une largeur de 10 caractères, le contenu doit être
+// aligné à droite, et chaque colonne séparée par le caractère ’|’. Toute sortie
+// plus longue que la largeur des colonnes est tronquée et le dernier caractère
+// affichable est remplacé par un point (’.’).
+
 void Phonebook::showContacts()
 {
     int i = 0;
@@ -43,8 +48,9 @@ void Phonebook::showContacts()
     while (i <= m_contactNbr)
     {
         std::cout << i + 1 << "| ";
-        std::cout << m_contacts[i].getFirstName() << " ";
-        std::cout << m_contacts[i].getLastName() << std::endl;
+        std::cout << m_contacts[i].getFirstName() << " | ";
+        std::cout << m_contacts[i].getLastName() << " | ";
+        std::cout << m_contacts[i].getNickname() << std::endl;
         i++;
     }
 }

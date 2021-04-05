@@ -50,6 +50,8 @@ class Contact
         std::string     getFavoriteMeal() const;
         std::string     getUnderwearColor() const;
         std::string     getDarkestSecret() const;
+
+        bool            is_email(std::string str);
 };
 
 #endif
