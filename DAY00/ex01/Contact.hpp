@@ -52,6 +52,9 @@ class Contact
         std::string     getDarkestSecret() const;
 
         bool            is_email(std::string str);
+        std::string     getFirstNameFormatted();
+        std::string     getLastNameFormatted();
+        std::string     getNicknameFormatted();
 };
 
 #endif

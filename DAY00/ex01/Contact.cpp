@@ -13,6 +13,7 @@ void Contact::setFirstName()
     std::string name;
 
     std::cout << "First name: ";
+    std::cin.ignore();
     std::getline(std::cin, name);
     while (name == "")
     {
@@ -197,3 +198,30 @@ std::string Contact::getBirthday() const { return m_birthday; }
 std::string Contact::getFavoriteMeal() const { return m_favoriteMeal; }
 std::string Contact::getUnderwearColor() const { return m_underwearColor; }
 std::string Contact::getDarkestSecret() const { return m_darkestSecret; }
+
+std::string Contact::getFirstNameFormatted()
+{
+    std::string name = m_firstName;
+
+    if (name.size() > 10)
+        name[9] = '.';
+    return name.substr(0, 10);
+}
+
+std::string Contact::getLastNameFormatted()
+{
+    std::string name = m_lastName;
+
+    if (name.size() > 10)
+        name[9] = '.';
+    return name.substr(0, 10);
+}
+
+std::string Contact::getNicknameFormatted()
+{
+    std::string name = m_nickname;
+
+    if (name.size() > 10)
+        name[9] = '.';
+    return name.substr(0, 10);
+}

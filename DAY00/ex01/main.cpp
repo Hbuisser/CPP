@@ -8,7 +8,7 @@ int main()
 
     while (1)
     {
-        std::cout << "Enter your command: ADD, SEARCH or EXIT\n";
+        std::cout << "Enter your command: ADD, SEARCH or EXIT" << std::endl;
         std::cin >> cmd;
         for (int i = 0; cmd[i] != 0; i++)
             cmd[i] = std::toupper(cmd[i]);
@@ -21,6 +21,8 @@ int main()
             std::cout << "Goodbye!" << std::endl;
             break ;
         }
+        else
+            std::cout << "This is not a valid command, try again" << std::endl;
     }
     return (0);
 }
