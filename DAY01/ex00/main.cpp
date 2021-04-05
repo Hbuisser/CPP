@@ -3,18 +3,19 @@
 
 void ponyOnTheHeap()
 {
-    Pony *AlbertLePoney = new Pony();
+    Pony *heapPoney = new Pony();
 
-    AlbertLePoney->setName("Albert Le Poney");
-    std::cout << "Name of the Poney : " << AlbertLePoney->getName() << std::endl;
+    heapPoney->setName("Heapponey");
+    std::cout << "Name of the Poney : " << heapPoney->getName() << std::endl;
+    delete heapPoney;
 }
 
 void ponyOnTheStack()
 {
-    Pony PhilibertLePoney;
+    Pony stackPoney;
 
-    PhilibertLePoney.setName("PhilibertLePoney");
-    std::cout << "Name of the Poney : " << PhilibertLePoney.getName() << std::endl;
+    stackPoney.setName("Stackponey");
+    std::cout << "Name of the Poney : " << stackPoney.getName() << std::endl;
 }
 
 int main()
