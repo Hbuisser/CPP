@@ -63,5 +63,3 @@ int AWeapon::getDamage() const
 {
 	return (m_damage);
 }
-
-//void attack() const = 0

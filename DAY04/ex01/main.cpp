@@ -4,6 +4,7 @@
 #include "RadScorpion.hpp"
 #include "PlasmaRifle.hpp"
 #include "PowerFist.hpp"
+#include "SuperMutant.hpp"
 
 int main()
 {
@@ -29,5 +30,24 @@ int main()
     
     moi->attack(b);
     std::cout << *moi;
+
+    std::cout << "___________SuperMutant test_____________" << std::endl;
+    SuperMutant *s = new SuperMutant();
+    moi->recoverAP();
+    moi->recoverAP();
+    std::cout << *moi;
+    moi->attack(s);
+    std::cout << "HP of SuperMutant : " << s->getHP() << std::endl;
+    moi->equip(pf);
+    moi->attack(s);
+    std::cout << "HP of SuperMutant : " << s->getHP() << std::endl;
+    moi->attack(s);
+    std::cout << "HP of SuperMutant : " << s->getHP() << std::endl;
+    moi->attack(s);
+    std::cout << "HP of SuperMutant : " << s->getHP() << std::endl;
+    moi->attack(s);
+    std::cout << *moi;
+    std::cout << "HP of SuperMutant : " << s->getHP() << std::endl;
+    moi->attack(s);
     return 0;
 }

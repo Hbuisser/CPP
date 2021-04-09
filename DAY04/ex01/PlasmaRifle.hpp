@@ -11,7 +11,6 @@ class PlasmaRifle : public AWeapon
 {
 	public:
 		PlasmaRifle();
-		//PlasmaRifle(std::string name, int damage, int apcost);
 		PlasmaRifle(PlasmaRifle const& copy);
 		~PlasmaRifle();
 		PlasmaRifle& operator=(PlasmaRifle const& copy);

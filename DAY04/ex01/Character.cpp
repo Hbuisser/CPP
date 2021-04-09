@@ -52,9 +52,8 @@ Character& Character::operator=(Character const& copy)
 
 void Character::recoverAP()
 {
-	if (m_AP <= 30)
-		m_AP += 10;
-	else 
+	m_AP += 10;
+	if (m_AP > 40)
 		m_AP = 40;
 }
 
@@ -74,15 +73,18 @@ void Character::attack(Enemy* enemy)
 		return ;
 	if (m_ptr == 0)
 		return ;
-	std::cout << getName() << " attaque " << enemy->getType() << " with a " << getWeaponName() << std::endl;
-	m_ptr->attack();
-	// retirerez les HP à l’ennemi basé sur les dégâts de l’arme
-	enemy->takeDamage(m_ptr->getDamage());
-	// Si les hp de l’ennemi passent à 0, vous devez le détruire.
-	if (enemy->getHP() == 0)
-		delete enemy;
-	/// perds des AP avec l'utilisation de l'arme
-	m_AP -= m_ptr->getAPCost();
+	if (m_ptr && m_AP >= m_ptr->getAPCost())
+	{
+		std::cout << getName() << " attaque " << enemy->getType() << " with a " << getWeaponName() << std::endl;
+		m_ptr->attack();
+		// retirerez les HP à l’ennemi basé sur les dégâts de l’arme
+		enemy->takeDamage(m_ptr->getDamage());
+		// Si les hp de l’ennemi passent à 0, vous devez le détruire.
+		if (enemy->getHP() == 0)
+			delete enemy;
+		/// perds des AP avec l'utilisation de l'arme
+		m_AP -= m_ptr->getAPCost();
+	}
 }
 
 std::string const Character::getName() const

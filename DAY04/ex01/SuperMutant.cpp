@@ -46,7 +46,8 @@ SuperMutant& SuperMutant::operator=(SuperMutant const& copy)
 
 void SuperMutant::takeDamage(int i)
 {
-	// attention a l'exeption
 	i -= 3;
+	if (i < 0)
+		i = 0;
 	Enemy::takeDamage(i);
 }
