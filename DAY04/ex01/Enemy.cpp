@@ -59,10 +59,11 @@ int Enemy::getHP() const
 	return m_hp;
 }
 
-
 void Enemy::takeDamage(int i)
 {
 	if (i < 0)
+		return ;
+	if (i > 0)
 		m_hp -= i;
 	if (m_hp < 0)
 		m_hp = 0;

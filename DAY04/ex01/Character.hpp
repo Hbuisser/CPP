@@ -23,6 +23,7 @@ class Character
 		std::string const getName() const;
 
 		AWeapon *getWeapon() const;
+		std::string getWeaponName() const;
 		int getAP() const;
 
 	private:

@@ -58,26 +58,31 @@ void Character::recoverAP()
 		m_AP = 40;
 }
 
-void Character::equip(AWeapon*)
+void Character::equip(AWeapon* weapon)
 {
-	//m_ptr = new AWeapon;
-	//*m_ptr = *weapon;
+	m_ptr = weapon;
+}
+
+std::string Character::getWeaponName() const
+{
+	return (m_ptr->getName());
 }
 
 void Character::attack(Enemy* enemy)
 {
 	if (m_AP == 0)
 		return ;
-	// Si aucune arme n’est équippée, attack() ne fait rien
 	if (m_ptr == 0)
 		return ;
-	std::cout << getName() << " attaque " << enemy->getType() << " with a " << std::endl;
-	// appel attack() de l’arme actuelle
-		//ptr.attack();
+	std::cout << getName() << " attaque " << enemy->getType() << " with a " << getWeaponName() << std::endl;
+	m_ptr->attack();
 	// retirerez les HP à l’ennemi basé sur les dégâts de l’arme
+	enemy->takeDamage(m_ptr->getDamage());
 	// Si les hp de l’ennemi passent à 0, vous devez le détruire.
+	if (enemy->getHP() == 0)
+		delete enemy;
 	/// perds des AP avec l'utilisation de l'arme
-
+	m_AP -= m_ptr->getAPCost();
 }
 
 std::string const Character::getName() const
@@ -99,5 +104,7 @@ std::ostream &operator<<(std::ostream &stream, Character const &other)
 {
 	if (other.getWeapon() == 0)
 		std::cout << other.getName() << " has " << other.getAP() << " AP and is unarmed" << std::endl;
+	else 
+		std::cout << other.getName() << " has " << other.getAP() << " AP and carries a " << other.getWeaponName() << std::endl;
 	return (stream);
 }

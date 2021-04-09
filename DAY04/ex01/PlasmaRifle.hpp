@@ -7,7 +7,7 @@
 
 # include "AWeapon.hpp"
 
-class PlasmaRifle : AWeapon
+class PlasmaRifle : public AWeapon
 {
 	public:
 		PlasmaRifle();

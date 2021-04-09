@@ -1,18 +1,18 @@
 
-# include "PowerFirst.hpp"
+# include "PowerFist.hpp"
 
 /*
 ** CONSTRUCTORS
 */
 
 // DEFAULT
-PowerFirst::PowerFirst() : AWeapon("Power First", 8, 50)
+PowerFist::PowerFist() : AWeapon("Power Fist", 8, 50)
 {
 	
 }
 
 // COPY
-PowerFirst::PowerFirst(PowerFirst const&)
+PowerFist::PowerFist(PowerFist const&)
 {
 	
 }
@@ -21,7 +21,7 @@ PowerFirst::PowerFirst(PowerFirst const&)
 ** DESTRUCTOR
 */
 
-PowerFirst::~PowerFirst()
+PowerFist::~PowerFist()
 {
 	
 }
@@ -31,7 +31,7 @@ PowerFirst::~PowerFirst()
 */
 
 // ASSIGNATION
-PowerFirst& PowerFirst::operator=(PowerFirst const& copy)
+PowerFist& PowerFist::operator=(PowerFist const& copy)
 {
 	if (this != &copy)
 	{
@@ -44,7 +44,7 @@ PowerFirst& PowerFirst::operator=(PowerFirst const& copy)
 ** MEMBER FUNCTIONS
 */
 
-void PowerFirst::attack() const
+void PowerFist::attack() const
 {
 	std::cout << "* pschhh... SBAM ! *" << std::endl;
 }
