@@ -15,18 +15,17 @@
 
 // shallow copy has pointers pointing on same memory adress
 
-typedef struct s_squadList
+typedef struct squadList
 {
-	s_squadList		*_next;
-	ISpaceMarine 	*_memberMarine;
-} 				s_squadList;
+	ISpaceMarine 	*m_unit;
+	squadList		*m_next;
+} 				squadList;
 
 class Squad : public ISquad
 {
 	public:
 		Squad();
 		Squad(Squad const& copy);
-		s_squadList *copySquadList(s_squadList *other);
 		~Squad();
 		Squad& operator=(Squad const& copy);
 
@@ -34,12 +33,9 @@ class Squad : public ISquad
 		ISpaceMarine* getUnit(int) const;
 		int push(ISpaceMarine*);
 
-		int noDouble(ISpaceMarine *a_marineMember);
-		s_squadList *getLast();
-
 	private:
 		int 		m_unitNbr;
-		s_squadList *m_list;
+		squadList 	*m_squadList;
 };
 
 #endif

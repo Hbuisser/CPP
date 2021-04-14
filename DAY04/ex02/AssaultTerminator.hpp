@@ -15,6 +15,7 @@ class AssaultTerminator : public ISpaceMarine
 		~AssaultTerminator();
 		AssaultTerminator& operator=(AssaultTerminator const& copy);
 
+		ISpaceMarine* clone() const;
 		void battleCry() const;
 		void rangedAttack() const;
 		void meleeAttack() const;

@@ -1,6 +1,10 @@
 
 # include "Squad.hpp"
 
+// nullptr is a keyword that can be used at all places where NULL is expected. 
+// Like NULL, nullptr is implicitly convertible and comparable to any pointer type. 
+// Unlike NULL, it is not implicitly convertible or comparable to integral types.
+
 /*
 ** CONSTRUCTORS
 */
@@ -8,33 +12,15 @@
 // DEFAULT
 Squad::Squad() : m_unitNbr(0)
 {
-	m_list = new s_squadList;
-	m_list->_next = 0;
-	m_list->_memberMarine = 0;
+	m_squadList = new squadList;
+	m_squadList->m_unit = nullptr;
+	m_squadList->m_next = nullptr;
 }
 
 // COPY
 Squad::Squad(Squad const& copy)
 {
-	m_list = copySquadList(copy.m_list);
-}
-
-s_squadList *Squad::copySquadList(s_squadList *other)
-{
-	s_squadList *newList;
-
-	newList = new s_squadList;
-	if (other && other->_memberMarine)
-	{
-		newList->_memberMarine = other->_memberMarine->clone();
-		newList->_next = Squad::copySquadList(other->_next);
-	}
-	else
-	{
-		newList->_memberMarine = 0;
-		newList->_next = 0;
-	}
-	return (newList);
+	*this = copy;
 }
 
 /*
@@ -43,21 +29,7 @@ s_squadList *Squad::copySquadList(s_squadList *other)
 
 Squad::~Squad()
 {
-	if (m_list)
-	{
-		s_squadList *iter;
-		s_squadList *next;
-		iter = m_list;
-		while (iter)
-		{
-			next = iter->_next;
-			if (iter->_memberMarine)
-				delete iter->_memberMarine;
-			delete iter;
-			iter = next;
-		}
-	}
-	m_list = 0;
+
 }
 
 /*
@@ -67,29 +39,16 @@ Squad::~Squad()
 // ASSIGNATION
 Squad& Squad::operator=(Squad const& copy)
 {
-	if (m_list)
+	if (this != &copy)
 	{
-		s_squadList *iter;
-		s_squadList *next;
-		iter = m_list;
-		while (iter)
-		{
-			next = iter->_next;
-			if (iter->_memberMarine)
-				delete iter->_memberMarine;
-			delete iter;
-			iter = next;
-		}
+		
 	}
-	m_list = copySquadList(copy.m_list);
-	m_unitNbr = copy.m_unitNbr;
 	return *this;
 }
 
 /*
 ** MEMBER FUNCTIONS
 */
-
 
 int Squad::getCount() const
 {
@@ -99,67 +58,48 @@ int Squad::getCount() const
 ISpaceMarine* Squad::getUnit(int n) const
 {
 	int i = 0;
-	s_squadList *iter;
+	squadList *iter = m_squadList;
 
-	iter = m_list;
-	if (n >= m_unitNbr)
-		return (NULL);
-	while (i < n && iter && iter->_next)
+	while (iter != nullptr)
 	{
-		iter = iter->_next;
+		if (i == n)
+			return (iter->m_unit);
 		i++;
+		iter = iter->m_next;
 	}
-	if (!iter)
-		return (NULL);
-	return iter->_memberMarine;
+	return (nullptr);
 }
 
-int Squad::noDouble(ISpaceMarine *a_marineMember)
+int Squad::push(ISpaceMarine* a_marine)
 {
-	s_squadList *iter;
+	// allocate the node
+	squadList *new_node = new squadList;
 
-	iter = m_list;
-	if (!a_marineMember)
-		return (0);
-	while (iter)
+	// put the argument that we want to push
+	new_node->m_unit = a_marine;
+	new_node->m_next = nullptr;
+
+	// if the main list is empty, make the new node the first one
+	if (m_squadList == nullptr)
 	{
-		if (iter->_memberMarine == a_marineMember)
-			return (0);
-		iter = iter->_next;
-	}
-	return (1);
-}
-
-s_squadList *Squad::getLast()
-{
-	s_squadList *iter;
-
-	iter = m_list;
-	while (iter && iter->_next)
-		iter = iter->_next;
-	return (iter);
-}
-
-int Squad::push(ISpaceMarine* a_marineMember)
-{
-	s_squadList *iter;
-
-	if (a_marineMember && Squad::noDouble(a_marineMember))
-	{
-		iter = Squad::getLast();
-		if (iter && iter->_memberMarine)
-		{
-			iter->_next = new s_squadList;
-			iter = iter->_next;
-			iter->_memberMarine = a_marineMember;
-			iter->_next = 0;
-		}
-		else 
-		{
-			m_list->_memberMarine = a_marineMember;
-			m_list->_next = 0;
-		}
+		m_squadList->m_unit = new_node->m_unit;
 		m_unitNbr++;
+		return (m_unitNbr);
 	}
+
+	// get the last item of the old list
+	while (m_squadList != nullptr && m_squadList->m_next != nullptr)
+	{
+		// if already in the old list, return
+		if (m_squadList->m_unit == new_node->m_unit)
+			return (m_unitNbr);
+		m_squadList = m_squadList->m_next;
+	}
+
+	// link the argument to the last item
+	m_squadList->m_next = new_node;
+	m_unitNbr++;
 	return (m_unitNbr);
 }
+
+// deepcopy means a copy on another memory address

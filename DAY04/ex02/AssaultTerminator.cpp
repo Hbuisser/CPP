@@ -44,6 +44,11 @@ AssaultTerminator& AssaultTerminator::operator=(AssaultTerminator const& copy)
 ** MEMBER FUNCTIONS
 */
 
+ISpaceMarine* AssaultTerminator::clone() const
+{
+	return (new AssaultTerminator());
+}
+
 void AssaultTerminator::battleCry() const
 {
 	std::cout << "This code is unclean. Purify it !" << std::endl;
