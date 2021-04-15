@@ -34,6 +34,9 @@ class Squad : public ISquad
 		ISpaceMarine* getUnit(int) const;
 		int push(ISpaceMarine*);
 
+		int onlyOnce(ISpaceMarine *a_marine);
+		squadList *getLast();
+
 
 	private:
 		int 		m_unitNbr;

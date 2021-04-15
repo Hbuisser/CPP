@@ -105,44 +105,54 @@ ISpaceMarine* Squad::getUnit(int n) const
 	return (iter->m_unit);
 }
 
+squadList *Squad::getLast()
+{
+	squadList *iter;
+
+	iter = m_squadList;
+	while (iter && iter->m_next)
+	{
+		iter = iter->m_next;
+	}
+	return (iter);
+}
+
+int Squad::onlyOnce(ISpaceMarine *a_marine)
+{
+	squadList *iter;
+
+	iter = m_squadList;
+	if (!a_marine)
+		return (0);
+	while (iter)
+	{
+		if (iter->m_unit == a_marine)
+			return (0);
+		iter = iter->m_next;
+	}
+	return (1);
+}
+
 int Squad::push(ISpaceMarine* a_marine)
 {
-	// protect
-	if (!a_marine)
-		return (m_unitNbr);
+	squadList	*iter;
 
-	// allocate the node
-	squadList *new_node = new squadList;
-
-	// put the argument that we want to push
-	new_node->m_unit = a_marine;
-	new_node->m_next = nullptr;
-
-	// if the main list is empty, make the new node the first one
-	std::cout << "Yyyyyyyyyyy" << std::endl;
-	if (m_squadList->m_unit == nullptr)
+	if (a_marine && Squad::onlyOnce(a_marine))
 	{
-		std::cout << "Innnnnnnn" << std::endl;
-		m_squadList->m_unit = new_node->m_unit;
-		m_unitNbr++;
-		return (m_unitNbr);
-	}
-
-	// get the last item of the old list
-	std::cout << "Xxxxxxxxxxx" << std::endl;
-	while (m_squadList != nullptr && m_squadList->m_next != nullptr)
-	{
-		// if already in the old list, return
-		if (m_squadList->m_unit == new_node->m_unit)
+		iter = Squad::getLast();
+		if (iter && iter->m_unit)
 		{
-			std::cout << "_______&&&&&&&&&&&&&&&" << std::endl;
-			return (m_unitNbr);
+			iter->m_next = new squadList;
+			iter = iter->m_next;
+			iter->m_unit = a_marine;
+			iter->m_next = nullptr;
 		}
-		m_squadList = m_squadList->m_next;
+		else
+		{
+			m_squadList->m_unit = a_marine;
+			m_squadList->m_next = nullptr;
+		}
+		m_unitNbr++;
 	}
-	std::cout << "PPPPPPPPPP" << std::endl;
-	// link the argument to the last item
-	m_squadList->m_next = new_node;
-	m_unitNbr++;
 	return (m_unitNbr);
 }
