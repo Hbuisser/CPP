@@ -47,10 +47,11 @@ TacticalMarine& TacticalMarine::operator=(TacticalMarine const& copy)
 
 ISpaceMarine* TacticalMarine::clone() const
 {
-	ISpaceMarine *elem;
+	// ISpaceMarine *elem;
 
-	elem = new TacticalMarine(*this);
-	return (elem);
+	// elem = new TacticalMarine(*this);
+	// return (elem);
+	return (new TacticalMarine());
 }
 
 void TacticalMarine::battleCry() const

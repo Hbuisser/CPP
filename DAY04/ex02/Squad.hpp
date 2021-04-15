@@ -26,12 +26,14 @@ class Squad : public ISquad
 	public:
 		Squad();
 		Squad(Squad const& copy);
+		squadList *copySquad(squadList *copy);
 		~Squad();
 		Squad& operator=(Squad const& copy);
 
 		int getCount() const;
 		ISpaceMarine* getUnit(int) const;
 		int push(ISpaceMarine*);
+
 
 	private:
 		int 		m_unitNbr;
