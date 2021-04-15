@@ -18,28 +18,10 @@ Squad::Squad() : m_unitNbr(0)
 }
 
 // COPY
-Squad::Squad(Squad const& copy) //: m_unitNbr(copy.m_unitNbr)
+Squad::Squad(Squad const& copy)
 {
-	//m_squadList = copySquad(copy.m_squadList);
 	*this = copy;
 }
-
-// squadList *Squad::copySquad(squadList *copy)
-// {
-// 	squadList *new_list = new squadList;
-
-// 	if (copy && copy->m_unit)
-// 	{
-// 		new_list->m_unit = copy->m_unit->clone();
-// 		new_list->m_next = Squad::copySquad(copy->m_next);
-// 	}
-// 	else
-// 	{
-// 		new_list->m_unit = 0;
-// 		new_list->m_next = 0;
-// 	}
-// 	return (new_list);
-// }
 
 /*
 ** DESTRUCTOR
@@ -56,7 +38,6 @@ Squad::~Squad()
 		m_squadList = m_squadList->m_next;
 		delete iter;
 	}
-	//delete m_squadList->m_next;
 }
 
 /*
@@ -67,18 +48,22 @@ Squad::~Squad()
 // deepcopy means a copy on another memory address
 Squad& Squad::operator=(Squad const& copy)
 {
-	if (this != &copy)
+	while (m_squadList != nullptr)
 	{
-		squadList *iter;
-
-		iter = copy.m_squadList;
-		while (iter != nullptr)
-		{
-			push(iter->m_unit->clone());
-			iter = iter->m_next;
-		}
+		delete m_squadList->m_unit;
+		m_squadList = m_squadList->m_next;
 	}
-	return *this;
+	m_squadList = new squadList;
+	m_squadList->m_unit = nullptr;
+	m_squadList->m_next = nullptr;
+	squadList *iter;
+	iter = copy.m_squadList;
+	while (iter != nullptr)
+	{
+		push(iter->m_unit->clone());
+		iter = iter->m_next;
+	}
+	return (*this);
 }
 
 /*

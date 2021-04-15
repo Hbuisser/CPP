@@ -35,7 +35,7 @@ int main()
 
     test->push(albert);
     test->push(etienne);
-    //test->push(etienne); // should not push
+    test->push(etienne); // should not push
     test->push(joseph);
     test->push(nullptr); // should not add
 
@@ -54,10 +54,32 @@ int main()
 
     std::cout << "________Assignation operator (deep)___________" << std::endl;
 
+    ISpaceMarine *a = new TacticalMarine;
+    ISpaceMarine *b = new AssaultTerminator;
+    ISpaceMarine *c = new AssaultTerminator;
+    ISquad *test2 = new Squad;
+    ISquad *test_copy2 = new Squad;
 
-    // *test_copy = *test; // check if deep copy
-    // delete test;
-    // delete test_copy;
+    test2->push(a);
+    test2->push(b);
+    test2->push(b); // should not push
+    test2->push(c);
+    test2->push(nullptr); // should not add
+
+    test_copy = test; // check if deep copy - same address ??
+    std::cout << test << std::endl;
+    std::cout << test_copy << std::endl;
+
+    for (int i = 0; i < test2->getCount(); ++i)
+    {
+        ISpaceMarine* cur = test2->getUnit(i);
+        cur->battleCry();
+        cur->rangedAttack();
+        cur->meleeAttack();
+    }
+
+    delete test;
+    //delete test_copy;
 
     return 0;
 }
