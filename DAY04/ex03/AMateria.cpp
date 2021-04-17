@@ -6,10 +6,10 @@
 */
 
 // DEFAULT
-// AMateria::AMateria()
-// {
-	
-// }
+AMateria::AMateria(std::string const& type) : _xp(0)
+{
+	m_type = type;
+}
 
 // COPY
 // AMateria::AMateria(AMateria const&)

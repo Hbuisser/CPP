@@ -5,13 +5,17 @@
 # include <iostream>
 # include <string>
 
-class Cure
+#include "AMateria.hpp"
+
+class Cure : public AMateria
 {
 	public:
 		Cure();
-		Cure(Cure const& copy);
+		//Cure(Cure const& copy);
 		~Cure();
 		Cure& operator=(Cure const& copy);
+
+		AMateria* clone() const;
 
 	private:
 

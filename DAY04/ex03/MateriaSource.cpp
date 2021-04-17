@@ -8,7 +8,9 @@
 // DEFAULT
 MateriaSource::MateriaSource()
 {
-	
+	m_materias = new materias;
+	m_materias->object = nullptr;
+	m_materias->next = nullptr;
 }
 
 // COPY
@@ -23,7 +25,15 @@ MateriaSource::MateriaSource(MateriaSource const& )
 
 MateriaSource::~MateriaSource()
 {
-	
+	materias *iter;
+
+	while (m_materias != nullptr)
+	{
+		delete m_materias->object;
+		iter = m_materias;
+		m_materias = m_materias->next;
+		delete iter;
+	}
 }
 
 /*
@@ -44,12 +54,15 @@ MateriaSource& MateriaSource::operator=(MateriaSource const& copy)
 ** MEMBER FUNCTIONS
 */
 
-void MateriaSource::learnMateria(AMateria*)
+void MateriaSource::learnMateria(AMateria* m)
 {
-
+	if (m_materias->object == nullptr)
+	{
+		m_materias->object = m;
+	}
 }
 
-AMateria* MateriaSource::createMateria(std::string const & type)
-{
+// AMateria* MateriaSource::createMateria(std::string const & type)
+// {
 	
-}
+// }

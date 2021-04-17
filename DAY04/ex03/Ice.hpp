@@ -5,13 +5,17 @@
 # include <iostream>
 # include <string>
 
-class Ice
+#include "AMateria.hpp"
+
+class Ice : public AMateria
 {
 	public:
 		Ice();
-		Ice(Ice const& copy);
+		//Ice(Ice const& copy);
 		~Ice();
 		Ice& operator=(Ice const& copy);
+
+		AMateria* clone() const;
 
 	private:
 

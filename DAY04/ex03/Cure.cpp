@@ -6,16 +6,16 @@
 */
 
 // DEFAULT
-Cure::Cure()
+Cure::Cure() : AMateria("cure")
 {
 	
 }
 
 // COPY
-Cure::Cure(Cure const&)
-{
+// Cure::Cure(Cure const&) : AMateria("cure")
+// {
 	
-}
+// }
 
 /*
 ** DESTRUCTOR
@@ -44,3 +44,7 @@ Cure& Cure::operator=(Cure const& copy)
 ** MEMBER FUNCTIONS
 */
 
+AMateria* Cure::clone() const
+{
+	return (new Cure());
+}

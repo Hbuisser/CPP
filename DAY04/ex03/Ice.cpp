@@ -6,16 +6,16 @@
 */
 
 // DEFAULT
-Ice::Ice()
+Ice::Ice() : AMateria("ice")
 {
 	
 }
 
 // COPY
-Ice::Ice(Ice const&)
-{
+// Ice::Ice(Ice const&) : AMateria("ice")
+// {
 	
-}
+// }
 
 /*
 ** DESTRUCTOR
@@ -44,3 +44,7 @@ Ice& Ice::operator=(Ice const& copy)
 ** MEMBER FUNCTIONS
 */
 
+AMateria* Ice::clone() const
+{
+	return (new Ice());
+}
