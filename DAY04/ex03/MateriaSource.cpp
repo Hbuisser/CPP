@@ -8,15 +8,16 @@
 // DEFAULT
 MateriaSource::MateriaSource()
 {
-	m_materias = new materias;
-	m_materias->object = nullptr;
-	m_materias->next = nullptr;
+	for (int i = 0; i < 4; i++)
+		m_materia[i] = 0;
 }
 
 // COPY
-MateriaSource::MateriaSource(MateriaSource const& )
+MateriaSource::MateriaSource(MateriaSource const& copy)
 {
-	
+	for (int i = 0; i < 4; i++)
+		m_materia[i] = 0;
+	*this = copy;
 }
 
 /*
@@ -25,15 +26,8 @@ MateriaSource::MateriaSource(MateriaSource const& )
 
 MateriaSource::~MateriaSource()
 {
-	materias *iter;
-
-	while (m_materias != nullptr)
-	{
-		delete m_materias->object;
-		iter = m_materias;
-		m_materias = m_materias->next;
-		delete iter;
-	}
+	for (int i = 0; i < 4; i++)
+		delete m_materia[i];
 }
 
 /*
@@ -45,7 +39,10 @@ MateriaSource& MateriaSource::operator=(MateriaSource const& copy)
 {
 	if (this != &copy)
 	{
-		
+		for (int i = 0; i < 4; i++)
+			delete m_materia[i];
+		for (int i = 0; i < 4; i++)
+			m_materia[i] = copy.m_materia[i]->clone();
 	}
 	return *this;
 }
@@ -56,13 +53,15 @@ MateriaSource& MateriaSource::operator=(MateriaSource const& copy)
 
 void MateriaSource::learnMateria(AMateria* m)
 {
-	if (m_materias->object == nullptr)
-	{
-		m_materias->object = m;
-	}
+	int i = 0;
+
+	while (i < 4 && m_materia[i])
+		i++;
+	if (m)
+		m_materia[i] = m->clone();
 }
 
-// AMateria* MateriaSource::createMateria(std::string const & type)
-// {
+AMateria* MateriaSource::createMateria(std::string const & type)
+{
 	
-// }
+}

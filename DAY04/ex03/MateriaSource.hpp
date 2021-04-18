@@ -8,12 +8,6 @@
 #include "IMateriaSource.hpp"
 #include "AMateria.hpp"
 
-typedef struct materias
-{
-	AMateria 	*object;
-	materias 	*next;
-}				materias;
-
 class MateriaSource : public IMateriaSource
 {
 	public:
@@ -23,10 +17,10 @@ class MateriaSource : public IMateriaSource
 		MateriaSource& operator=(MateriaSource const& copy);
 
 		void learnMateria(AMateria*);
-		// AMateria* createMateria(std::string const & type);
+		AMateria* createMateria(std::string const & type);
 
 	private:
-		materias 	*m_materias;
+		AMateria *m_materia[4];
 
 };
 
