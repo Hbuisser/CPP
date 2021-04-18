@@ -27,7 +27,8 @@ Character::Character(Character const& copy) : m_name(copy.m_name)
 Character::~Character()
 {
 	for (int i = 0; i < 4; i++)
-		delete m_materia[i];
+		if (m_materia[i])
+			delete m_materia[i];
 }
 
 /*
@@ -37,13 +38,21 @@ Character::~Character()
 // ASSIGNATION
 Character& Character::operator=(Character const& copy)
 {
+	int i = 0;
 	if (this != &copy)
 	{
 		m_name = copy.m_name;
-		for (int i = 0; i < 4; i++)
+		while (i < 4 && m_materia[i])
+		{
 			delete m_materia[i];
-		for (int i = 0; i < 4; i++)
+			i++;
+		}
+		i = 0;
+		while (i < 4 && m_materia[i])
+		{
 			m_materia[i] = copy.m_materia[i]->clone();
+			i++;
+		}
 	}
 	return *this;
 }
