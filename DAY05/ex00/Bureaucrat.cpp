@@ -6,18 +6,26 @@
 */
 
 // DEFAULT
-Bureaucrat::Bureaucrat(std::name name, int grade) : m_name(name), m_grade(grade)
+
+// Bureaucrat::Bureaucrat()
+// {
+// 	m_grade = 150;
+// }
+
+Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name)
 {
 	if (grade < 1)
-		return Bureaucrat::GradeTooLowException();
+		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
-		return Bureaucrat::GradeTooHighException();
+		throw Bureaucrat::GradeTooLowException();
+	else
+		m_grade = grade;
 }
 
 // COPY
 Bureaucrat::Bureaucrat(Bureaucrat const& copy)
 {
-	
+	m_grade = copy.m_grade;
 }
 
 /*
@@ -47,12 +55,37 @@ Bureaucrat& Bureaucrat::operator=(Bureaucrat const& copy)
 ** MEMBER FUNCTIONS
 */
 
-void Bureaucrat::GradeTooHighException()
+void Bureaucrat::addGrade(void)
 {
-
+	if (m_grade <= 1)
+		throw Bureaucrat::GradeTooHighException();
+	else
+		m_grade--;
 }
 
-void Bureaucrat::GradeTooLowException()
+void Bureaucrat::minGrade(void)
 {
+	if (m_grade >= 150)
+		throw Bureaucrat::GradeTooLowException();
+	else
+		m_grade++;
+}
 
+/*
+** EXCEPTION FUNCTIONS
+*/
+
+void Bureaucrat::getGrade()
+{
+	std::cout << m_grade << std::endl;
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Grade is bigger than 150");
+}
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Grade is lower than 1");
 }

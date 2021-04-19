@@ -9,20 +9,31 @@
 class Bureaucrat
 {
 	public:
-		Bureaucrat(const std::string name, int grade);
+		//Bureaucrat();
+		Bureaucrat(const std::string name = "Default", int grade = 150);
 		Bureaucrat(Bureaucrat const& copy);
 		~Bureaucrat();
 		Bureaucrat& operator=(Bureaucrat const& copy);
 
-		void GradeTooHighException();
-		void GradeTooLowException();
-
 		const std::string getName(void) const;
 		int getGrade(void) const;
 
-		void 
+		void addGrade(void);
+		void minGrade(void);
+		void getGrade();
 
-	private:
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				const char *what() const throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char *what() const throw();
+		};
+
+	protected:
 		const std::string 	m_name;
 		int					m_grade;
 
