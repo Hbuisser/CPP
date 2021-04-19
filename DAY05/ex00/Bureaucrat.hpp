@@ -9,7 +9,6 @@
 class Bureaucrat
 {
 	public:
-		//Bureaucrat();
 		Bureaucrat(const std::string name = "Default", int grade = 150);
 		Bureaucrat(Bureaucrat const& copy);
 		~Bureaucrat();
@@ -17,10 +16,10 @@ class Bureaucrat
 
 		const std::string getName(void) const;
 		int getGrade(void) const;
+		void setGrade(int grade);
 
 		void addGrade(void);
 		void minGrade(void);
-		void getGrade();
 
 		class GradeTooHighException : public std::exception
 		{
@@ -38,5 +37,7 @@ class Bureaucrat
 		int					m_grade;
 
 };
+
+void operator<<(std::ostream &stream, Bureaucrat const &b);
 
 #endif

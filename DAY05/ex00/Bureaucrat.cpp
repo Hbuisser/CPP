@@ -6,12 +6,6 @@
 */
 
 // DEFAULT
-
-// Bureaucrat::Bureaucrat()
-// {
-// 	m_grade = 150;
-// }
-
 Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name)
 {
 	if (grade < 1)
@@ -25,7 +19,7 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name)
 // COPY
 Bureaucrat::Bureaucrat(Bureaucrat const& copy)
 {
-	m_grade = copy.m_grade;
+	*this = copy;
 }
 
 /*
@@ -46,7 +40,7 @@ Bureaucrat& Bureaucrat::operator=(Bureaucrat const& copy)
 {
 	if (this != &copy)
 	{
-		
+		setGrade(copy.getGrade());
 	}
 	return *this;
 }
@@ -75,9 +69,19 @@ void Bureaucrat::minGrade(void)
 ** EXCEPTION FUNCTIONS
 */
 
-void Bureaucrat::getGrade()
+void Bureaucrat::setGrade(int grade)
 {
-	std::cout << m_grade << std::endl;
+	m_grade = grade;
+}
+
+int Bureaucrat::getGrade(void) const
+{
+	return (m_grade);
+}
+
+const std::string Bureaucrat::getName(void) const
+{
+	return (m_name);
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
@@ -88,4 +92,9 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Grade is lower than 1");
+}
+
+void operator<<(std::ostream &stream, Bureaucrat const &b)
+{
+    stream << b.getName() << " bureaucrat, grade " << b.getGrade() << "." << std::endl;
 }
