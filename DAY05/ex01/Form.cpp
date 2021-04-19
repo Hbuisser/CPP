@@ -50,6 +50,35 @@ Form& Form::operator=(Form const& copy)
 ** MEMBER FUNCTIONS
 */
 
+void Form::beSigned(Bureaucrat const& officer)
+{
+	if (officer.getGrade() <= m_grade_sign)
+	{
+		m_signed = true;
+		officer.signForm(true, *this);
+	}
+	else
+	{
+		officer.signForm(false, *this);
+		throw Form::GradeTooLowException();
+	}
+}
+
+int Form::getGradeSign(void) const
+{
+	return (m_grade_sign);
+}
+
+int Form::getGradeExec(void) const
+{
+	return (m_grade_exec);
+}
+
+const std::string Form::getName(void) const
+{
+	return (m_name);
+}
+
 const char *Form::GradeTooLowException::what() const throw()
 {
 	return ("Grade is too low");
@@ -58,4 +87,11 @@ const char *Form::GradeTooLowException::what() const throw()
 const char *Form::GradeTooHighException::what() const throw()
 {
 	return ("Grade is too big");
+}
+
+///////////////
+
+void operator<<(std::ostream &stream, Form const &f)
+{
+    stream << f.getName() << " form, grade sign " << f.getGradeSign() << " | grade exec " << f.getGradeExec() << std::endl;
 }
