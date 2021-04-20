@@ -6,6 +6,12 @@
 */
 
 // DEFAULT
+Bureaucrat::Bureaucrat()
+{
+	m_name = "default";
+	m_grade = 150;
+}
+
 Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name)
 {
 	if (grade < 1)
@@ -94,9 +100,9 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
 	return ("Grade is lower than 1");
 }
 
-void Bureaucrat::signForm(bool b, Form const& f) const
+void Bureaucrat::signForm(bool bo, Form const& f) const
 {
-	if (b)
+	if (bo)
 		std::cout << getName() << " signs " << f.getName() << std::endl;
 	else
 		std::cout << getName() << " cant sign " << f.getName() << std::endl;

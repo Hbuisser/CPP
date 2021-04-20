@@ -20,6 +20,7 @@ class ShrubberyCreationForm : public Form
 		virtual void execute(Bureaucrat const& executor) const;
 		std::string const& getTarget() const;
 
+
 	private:
 		std::string const m_target;
 };

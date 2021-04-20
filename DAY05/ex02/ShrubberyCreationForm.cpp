@@ -53,21 +53,24 @@ std::string const& ShrubberyCreationForm::getTarget() const
 
 void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
-	std::string nameFile;
-	nameFile = getTarget() + "_shrubbery";
-
-	std::ofstream fileFlux(nameFile.c_str());
-	if (fileFlux)
+	if (verifBureaucratCanExecute(executor) && verifIfSigned())
 	{
-		fileFlux << "      /\\      " << std::endl; 
-		fileFlux << "     /\\*\\     " << std::endl; 
-		fileFlux << "    /\\O\\*\\    " << std::endl; 
-		fileFlux << "   /*/\\/\\/\\   " << std::endl; 
-		fileFlux << "  /\\O\\/\\*\\/\\  " << std::endl; 
-		fileFlux << " /\\*\\/\\*\\/\\/\\ " << std::endl; 
-		fileFlux << "/\\O\\/\\/*/\\/O/\\" << std::endl; 
-		fileFlux << "      ||      " << std::endl; 
-		fileFlux << "      ||      " << std::endl; 
-		fileFlux << "      ||      " << std::endl; 
+		std::string nameFile;
+		nameFile = getTarget() + "_shrubbery";
+
+		std::ofstream fileFlux(nameFile.c_str());
+		if (fileFlux)
+		{
+			fileFlux << "      /\\      " << std::endl; 
+			fileFlux << "     /\\*\\     " << std::endl; 
+			fileFlux << "    /\\O\\*\\    " << std::endl; 
+			fileFlux << "   /*/\\/\\/\\   " << std::endl; 
+			fileFlux << "  /\\O\\/\\*\\/\\  " << std::endl; 
+			fileFlux << " /\\*\\/\\*\\/\\/\\ " << std::endl; 
+			fileFlux << "/\\O\\/\\/*/\\/O/\\" << std::endl; 
+			fileFlux << "      ||      " << std::endl; 
+			fileFlux << "      ||      " << std::endl; 
+			fileFlux << "      ||      " << std::endl; 
+		}
 	}
 }

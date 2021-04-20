@@ -89,6 +89,33 @@ const char *Form::GradeTooHighException::what() const throw()
 	return ("Grade is too big");
 }
 
+const char *Form::NotSignedException::what() const throw()
+{
+	return ("Form is not signed");
+}
+
+bool Form::verifBureaucratCanExecute(Bureaucrat const& exec) const
+{
+	if (exec.getGrade() <= m_grade_exec)
+		return (true);
+	else
+	{
+		throw Form::GradeTooLowException();
+		return (false);
+	}
+}
+
+bool Form::verifIfSigned() const
+{
+	if (m_signed)
+		return (true);
+	else
+	{
+		throw Form::NotSignedException();
+		return (false);
+	}
+}
+
 ///////////////
 
 void operator<<(std::ostream &stream, Form const &f)

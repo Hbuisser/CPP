@@ -6,13 +6,15 @@
 */
 
 // DEFAULT
-RobotomyRequestForm::RobotomyRequestForm()
+RobotomyRequestForm::RobotomyRequestForm(std::string const& target) :
+m_target(target), Form("RobotomyRequestForm", 72, 45)
 {
 	
 }
 
 // COPY
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const& copy)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const& copy) :
+Form(copy)
 {
 	
 }
@@ -37,6 +39,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const& c
 	{
 		
 	}
+	Form::operator=(copy);
 	return *this;
 }
 
@@ -44,3 +47,19 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const& c
 ** MEMBER FUNCTIONS
 */
 
+std::string const& RobotomyRequestForm::getTarget() const
+{
+	return m_target;
+}
+
+void RobotomyRequestForm::execute(Bureaucrat const& executor) const
+{
+	if (verifBureaucratCanExecute(executor) && verifIfSigned())
+	{
+		int i = std::rand() % 2;
+		if (i > 0)
+			std::cout << "SHRRRRRRRAaaaaaaaakkkk... " << getTarget() << " has been robotomized" << std::endl;
+		else
+			std::cout << "SHRRRRRRRAaaaaaaaakkkk... " << getTarget() << " has not been robotomized" << std::endl;
+ 	}
+}

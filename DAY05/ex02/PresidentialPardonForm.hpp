@@ -5,16 +5,22 @@
 # include <iostream>
 # include <string>
 
-class PresidentialPardonForm
+#include "Form.hpp"
+#include "Bureaucrat.hpp"
+
+class PresidentialPardonForm : public Form
 {
 	public:
-		PresidentialPardonForm();
+		PresidentialPardonForm(std::string const& target = "Target");
 		PresidentialPardonForm(PresidentialPardonForm const& copy);
-		~PresidentialPardonForm();
+		virtual ~PresidentialPardonForm();
 		PresidentialPardonForm& operator=(PresidentialPardonForm const& copy);
 
-	private:
+		virtual void execute(Bureaucrat const& executor) const;
+		std::string const& getTarget() const;
 
+	private:
+		std::string const m_target;
 
 };
 

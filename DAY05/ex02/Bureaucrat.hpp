@@ -13,6 +13,7 @@ class Form;
 class Bureaucrat
 {
 	public:
+		Bureaucrat();
 		Bureaucrat(const std::string name = "Default", int grade = 150);
 		Bureaucrat(Bureaucrat const& copy);
 		~Bureaucrat();
@@ -25,7 +26,7 @@ class Bureaucrat
 		void addGrade(void);
 		void minGrade(void);
 
-		void signForm(bool b, Form const& f) const;
+		void signForm(bool bo, Form const& f) const;
 
 		class GradeTooHighException : public std::exception
 		{
@@ -39,7 +40,7 @@ class Bureaucrat
 		};
 
 	protected:
-		const std::string 	m_name;
+		std::string 		m_name;
 		int					m_grade;
 
 };
