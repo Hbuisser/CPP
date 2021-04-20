@@ -7,15 +7,33 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-void test_bureaucrat()
+void test_bureaucrat(Form &form)
 {
-	Bureaucrat b("Bob", 42);
+	Bureaucrat b("Bob", 150);
 	std::cout << b;
 
-	b.setGrade(100);
 	std::cout << b;
-
-	std::cout << " * Too low grade" << std::endl;
+	std::cout << "_______Can't sign because of grade" << std::endl;
+	try
+	{
+		form.beSigned(b);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << "_______Sign and Execute" << std::endl;
+	b.setGrade(1);
+	try
+	{
+		form.beSigned(b);
+		b.executeForm(form);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << "_______Too low grade" << std::endl;
 	try 
 	{
 		Bureaucrat bLow("Alice", 420);
@@ -24,7 +42,7 @@ void test_bureaucrat()
 	{
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << " * Too High grade" << std::endl;
+	std::cout << "_______Too High grade" << std::endl;
 	try {
 		Bureaucrat bLow("Alice", -20);
 	}
@@ -80,7 +98,7 @@ int main()
 	PresidentialPardonForm 	p_form("TheP");
 
     std::cout << "__________Bureaucrat test______________" << std::endl;
-    test_bureaucrat();
+    test_bureaucrat(s_form);
 
     std::cout << "__________Shrubbery test______________" << std::endl;
 	test_form(bob, s_form);

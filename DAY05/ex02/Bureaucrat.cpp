@@ -108,6 +108,26 @@ void Bureaucrat::signForm(bool bo, Form const& f) const
 		std::cout << getName() << " cant sign " << f.getName() << std::endl;
 }
 
+void Bureaucrat::executeForm(Form const& form) const
+{
+	if (m_grade <= form.getGradeExec())
+	{
+		form.execute(*this);
+		std::cout << m_name << " executes " << form.getName() << std::endl;
+	}
+	else
+	{
+		try 
+		{
+			form.execute(*this);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
+}
+
 ////////////////////
 
 void operator<<(std::ostream &stream, Bureaucrat const &b)
