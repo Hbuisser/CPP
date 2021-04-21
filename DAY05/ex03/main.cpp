@@ -6,6 +6,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 void test_bureaucrat(Form &form)
 {
@@ -90,6 +91,38 @@ void	test_form(Bureaucrat bob, Form &form)
 	}
 }
 
+void	test_intern(void)
+{
+	{
+		std::cout << "__________Robotomy Form" << std::endl;
+		Intern someRandomIntern;
+		Form *rrf;
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		delete rrf;
+	}
+	{
+		std::cout << "__________Shrubbery Form" << std::endl;
+		Intern someRandomIntern;
+		Form* rrf;
+		rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
+		delete rrf;
+	}
+	{
+		std::cout << "__________Presidential Form" << std::endl;
+		Intern someRandomIntern;
+		Form* rrf;
+		rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
+		delete rrf;
+	}
+	{
+		std::cout << "___________Unknown Form" << std::endl;
+		Intern someRandomIntern;
+		Form* rrf;
+		rrf = someRandomIntern.makeForm("unknown", "Bender");
+		delete rrf;
+	}
+}
+
 int main()
 {
     Bureaucrat              bob("Bob");
@@ -108,6 +141,9 @@ int main()
 
 	std::cout << "__________Shrubbery test______________" << std::endl;
 	test_form(bob, p_form);
+
+	std::cout << "__________Intern test______________" << std::endl;
+    test_intern();
 
     return (0);
 }
