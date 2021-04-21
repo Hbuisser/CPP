@@ -13,6 +13,9 @@ class Data
 		~Data();
 		Data& operator=(Data const& copy);
 
+		void convert(std::string str);
+		
+
 	private:
 
 

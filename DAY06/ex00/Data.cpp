@@ -44,3 +44,14 @@ Data& Data::operator=(Data const& copy)
 ** MEMBER FUNCTIONS
 */
 
+void Data::convert(std::string str)
+{
+	try
+	{
+		
+	}
+	catch (const std::exception &e)
+	{	
+		std::cerr << "ERROR : " << e.what() << std::endl;
+	}
+}
