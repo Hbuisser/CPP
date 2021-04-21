@@ -46,7 +46,7 @@ void cast_int(int i)
         std::cout << "char: non displayable" << std::endl;
     else
         std::cout << "char: " << static_cast<char>(i) << std::endl;
-    std::cout << "int: " << std::endl;
+    std::cout << "int: " << i << std::endl;
     std::cout << "float: " << static_cast<float>(i) << ".0f" << std::endl;
     std::cout << "double: " << static_cast<double>(i) << ".0" << std::endl;
 }
@@ -73,7 +73,7 @@ void cast_double(double d)
 		std::cout << "double: " << ss.str() << ".0" << std::endl;
 }
 
-void special_cast_double(double d)
+void special_double(double d)
 {
     std::cout << "char: impossible" << std::endl;
 	std::cout << "int: impossible" << std::endl;
@@ -103,7 +103,7 @@ void cast_float(float f)
 		std::cout << "double: " << ss.str() << ".0" << std::endl;
 }
 
-void	special_cast_float(float f)
+void	special_float(float f)
 {
 	std::cout << "char: impossible" << std::endl;
 	std::cout << "int: impossible" << std::endl;
@@ -162,7 +162,7 @@ int main(int argc, char **argv)
     }
     if (arg == "nan" || arg == "inf" || arg == "-inf")
 	{
-		special_cast_double(std::stod(arg));
+		special_double(std::stod(arg));
 		return 0;
 	}
 
@@ -174,7 +174,7 @@ int main(int argc, char **argv)
 	}
 	if (arg == "nanf" || arg == "inff" || arg == "-inff")
 	{
-		special_from_float(std::stof(arg));
+		special_float(std::stof(arg));
 		return 0;
 	}
     // Other impossible
