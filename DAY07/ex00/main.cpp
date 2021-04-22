@@ -38,44 +38,61 @@ class Data
         bool operator<=( Data const & other ) { return (this->m_n <= other.m_n); }
 };
 
-int main()
+int main() 
 {
-    int x = 5;
-    int y = 6;
-    int min;
-    int max;
-
-    float i = 5.2;
-    float j = 6.3;
-    float min_float;
-    float max_float;
-
-    Data a(5);
-    Data b(6);
-    Data test_a(0);
-    Data test_b(0);
-
-    std::cout << "_________test swap_________" << std::endl;
-    swap(x, y);
-    std::cout << "X : " << x << "| Y: " << y << std::endl;
-    swap(i, j);
-    std::cout << "I : " << i << "| J: " << j << std::endl;
-    swap(a, b);
-    std::cout << "n(a) : " << a.m_n << "| n(b): " << b.m_n << std::endl;
-
-    std::cout << "_________test min_________" << std::endl;
-    min = ::min(x, y);  //:: is used to indicate we want the max function from this namespace/file and not form the string lib
-    std::cout << min << std::endl;
-    min_float = ::min(i, j);
-    std::cout << min_float << std::endl;
-    test_a = ::min(a, b).m_n;
-    std::cout << test_a.m_n << std::endl;
-
-    std::cout << "_________test max_________" << std::endl;
-    max = ::max(x, y);  
-    std::cout << max << std::endl;
-    max_float = ::max(i, j);
-    std::cout << max_float << std::endl;
-    test_b = ::max(a, b).m_n;
-    std::cout << test_b.m_n << std::endl;
+    int a = 2;
+    int b = 3;
+    ::swap( a, b );
+    std::cout << "a = " << a << ", b = " << b << std::endl;
+    std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
+    std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+    std::string c = "chaine1";
+    std::string d = "chaine2";
+    ::swap(c, d);
+    std::cout << "c = " << c << ", d = " << d << std::endl;
+    std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
+    std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+    return 0;
 }
+
+// int main()
+// {
+//     int x = 5;
+//     int y = 6;
+//     int min;
+//     int max;
+
+//     float i = 5.2;
+//     float j = 6.3;
+//     float min_float;
+//     float max_float;
+
+//     Data a(5);
+//     Data b(6);
+//     Data test_a(0);
+//     Data test_b(0);
+
+//     std::cout << "_________test swap_________" << std::endl;
+//     swap(x, y);
+//     std::cout << "X : " << x << "| Y: " << y << std::endl;
+//     swap(i, j);
+//     std::cout << "I : " << i << "| J: " << j << std::endl;
+//     swap(a, b);
+//     std::cout << "n(a) : " << a.m_n << "| n(b): " << b.m_n << std::endl;
+
+//     std::cout << "_________test min_________" << std::endl;
+//     min = ::min(x, y);  //:: is used to indicate we want the max function from this namespace/file and not form the string lib
+//     std::cout << min << std::endl;
+//     min_float = ::min(i, j);
+//     std::cout << min_float << std::endl;
+//     test_a = ::min(a, b).m_n;
+//     std::cout << test_a.m_n << std::endl;
+
+//     std::cout << "_________test max_________" << std::endl;
+//     max = ::max(x, y);
+//     std::cout << max << std::endl;
+//     max_float = ::max(i, j);
+//     std::cout << max_float << std::endl;
+//     test_b = ::max(a, b).m_n;
+//     std::cout << test_b.m_n << std::endl;
+// }
