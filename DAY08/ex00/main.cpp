@@ -1,20 +1,41 @@
-#include <iostream>
+
 #include "easyfind.hpp"
+#include <vector>
+#include <iterator>
+#include <list>
 
 // stl : standard template library
 
+/////////////////////////////////
 // containers : 
 // std::list<int>   lst1;
 // std::map<>
-// std::vector
+// std::vector<int>  v(42, 100)                             // tableau avec 42 cases qui contiennent toutes 100
 
 // lst1.push_back(42);
 
+//////////////////////////////////
 // iterator : (equivalent stl d'un pointeur)
-// std::list<int>::const_iterator   i;
-// std::list<int>::const_iterator   i_end = lest1.end();
+// std::list<int>::const_iterator   i;                          // class imbriquees
+// std::list<int>::const_iterator   i_end = lest1.end();        // .end() => on a depasse le dernier element
 
 // for (i = lst1.begin(); i != i_end; ++i)
-//        std::cout << *i << std::endl;
+//        std::cout << *i << std::endl;                         // dereferencer
 
+////////////////////////////////////
+// Algoritm : fct preimplementees qui peuvent operer sur des collections
+// et effectuer des operations standards
+// ex: for_each()
 
+int main()
+{
+    int array[] = {5, 19, 88, 42};
+    std::vector<int> v_array(array, array + 5);
+    //std::vector<int> v_array = {5, 19, 88, 42};
+    std::list<int> l_array(array, array + 5);
+    
+
+    test_easyfind(v_array, 22);
+    test_easyfind(l_array, 88);
+    return (0);
+}
