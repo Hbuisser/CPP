@@ -33,6 +33,7 @@ class MutantStack : public std::stack<T>
 
 		// container_type est un member type de std::stack
 		// On definit un iterator via les contenair imbrique
+		// c is the default member object (container)
 		typedef typename std::stack<T>::container_type::iterator 	iterator;
 		iterator begin()
 		{
