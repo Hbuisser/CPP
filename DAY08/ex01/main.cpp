@@ -41,21 +41,21 @@ int main(void)
 		f.addNumber(10);
 		f.addNumber(3);
 		f.addNumber(2);
-		for (std::vector<int>::iterator it = f.getList().begin(); it != f.getList().end(); it++)
-			std::cout << *it << " ";
+		for (std::vector<int>::iterator i = f.getList().begin(); i != f.getList().end(); i++)
+			std::cout << *i << " ";
 		std::cout << std::endl;
 		std::cout << "short span: " << f.shortestSpan() << " long span: " << f.longestSpan() << std::endl;
 	}
 	{
-		std::cout << "____________class" << std::endl;
+		std::cout << "____________generate class" << std::endl;
 
 		Span f(6);
 		std::vector<int> v(6, 0);
 		generate(v.begin(), v.end(), Generate());
 		f.addNumber(v.begin(), v.end());
 		std::cout << "vector Generated: ";
-		for (std::vector<int>::iterator it = v.begin(); it != v.end(); it++)
-			std::cout << *it << " ";
+		for (std::vector<int>::iterator i = v.begin(); i != v.end(); i++)
+			std::cout << *i << " ";
 		std::cout << std::endl;
 		std::cout << "arr: ";
 		for (std::vector<int>::iterator it = f.getList().begin(); it != f.getList().end(); it++)
