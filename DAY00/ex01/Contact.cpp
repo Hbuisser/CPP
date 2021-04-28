@@ -13,7 +13,7 @@ void Contact::setFirstName()
     std::string name;
 
     std::cout << "First name: ";
-    std::cin.ignore();
+    //std::cin.ignore();
     std::getline(std::cin, name);
     while (name == "")
     {

@@ -111,7 +111,10 @@ void Phonebook::searchContact()
             std::cout << "Invalid number, try again :" << std::endl;
             this->showContacts();
             if (!(std::getline(std::cin, cmd)))
+            {
+                
                 return ;
+            }
             while (index == 0)
             {
                 try
