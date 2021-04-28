@@ -29,8 +29,8 @@ class Phonebook
     public:
         Phonebook();
         ~Phonebook();
-        void createContact();
-        void searchContact();
+        int createContact();
+        int searchContact();
         void showContacts();
         void showContact(int inputUser);
         bool isNoNumeric(std::string str);

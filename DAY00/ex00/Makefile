@@ -10,7 +10,7 @@ CC = clang++
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(FLAGS) $(SRC) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	$(RM) $(OBJS)

@@ -27,17 +27,17 @@ class Contact
         Contact();
         ~Contact();
     
-        void            setFirstName();
-        void            setLastName();
-        void            setNickname();
-        void            setLogin();
-        void            setPostalAddress();
-        void            setEmail();
-        void            setPhoneNumber();
-        void            setBirthday();
-        void            setFavoriteMeal();
-        void            setUnderwearColor();
-        void            setDarkestSecret();
+        int             setFirstName();
+        int             setLastName();
+        int             setNickname();
+        int             setLogin();
+        int             setPostalAddress();
+        int             setEmail();
+        int             setPhoneNumber();
+        int             setBirthday();
+        int             setFavoriteMeal();
+        int             setUnderwearColor();
+        int             setDarkestSecret();
 
         std::string     getFirstName() const;
         std::string     getLastName() const;

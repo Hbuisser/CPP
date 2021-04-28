@@ -14,25 +14,45 @@ Phonebook::~Phonebook()
     autres vérifications si nécessaire avant la destruction de l'objet. */
 }
 
-void Phonebook::createContact()
+int Phonebook::createContact()
 {
     m_contactNbr++;
     if (m_contactNbr > 7)
     {
         std::cout << "Your Phonebook is full !" << std::endl;
-        return ;
+        return 1;
     }
-    m_contacts[m_contactNbr].setFirstName();
-    m_contacts[m_contactNbr].setLastName();
-    m_contacts[m_contactNbr].setNickname();
-    m_contacts[m_contactNbr].setLogin();
-    m_contacts[m_contactNbr].setPostalAddress();
-    m_contacts[m_contactNbr].setEmail();
-    m_contacts[m_contactNbr].setPhoneNumber();
-    m_contacts[m_contactNbr].setBirthday();
-    m_contacts[m_contactNbr].setFavoriteMeal();
-    m_contacts[m_contactNbr].setUnderwearColor();
-    m_contacts[m_contactNbr].setDarkestSecret();
+    try
+    {
+        if (m_contacts[m_contactNbr].setFirstName() == 0)
+            return 0;
+        if (m_contacts[m_contactNbr].setLastName() == 0)
+            return 0;
+        if (m_contacts[m_contactNbr].setNickname() == 0)
+            return 0;
+        if (m_contacts[m_contactNbr].setLogin() == 0)
+            return 0;
+        if (m_contacts[m_contactNbr].setPostalAddress() == 0)
+            return 0;
+        if (m_contacts[m_contactNbr].setEmail() == 0)
+            return 0;
+        if (m_contacts[m_contactNbr].setPhoneNumber() == 0)
+            return 0;
+        if (m_contacts[m_contactNbr].setBirthday() == 0)
+            return 0;
+        if (m_contacts[m_contactNbr].setFavoriteMeal() == 0)
+            return 0;
+        if (m_contacts[m_contactNbr].setUnderwearColor() == 0)
+            return 0;
+        if (m_contacts[m_contactNbr].setDarkestSecret() == 0)
+            return 0;
+    }
+    catch (std::exception const& e)
+    {
+        std::cerr << "Goodbye " << std::endl;
+        return 0;
+    }
+    return 1;
 }
 
 void Phonebook::showContacts()
@@ -77,7 +97,7 @@ bool Phonebook::isNoNumeric(std::string str)
         return false;
 }
 
-void Phonebook::searchContact()
+int Phonebook::searchContact()
 {
     int             index = 0;
     std::string     cmd;
@@ -89,7 +109,7 @@ void Phonebook::searchContact()
         std::cout << "Enter your contact number : " << std::endl;
         this->showContacts();
         if (!(std::getline(std::cin, cmd)))
-            return ;
+            return 0;
         while (index == 0)
         {
             try
@@ -102,7 +122,7 @@ void Phonebook::searchContact()
                 std::cerr << "Invalid number, try again : " << std::endl;
                 this->showContacts();
                 if (!(std::getline(std::cin, cmd)))
-                    return ;
+                    return 0;
             }
         }
         while (!(std::stoi(cmd)) || (std::stoi(cmd) <= 0 || std::stoi(cmd) > this->m_contactNbr + 1 || isNoNumeric(cmd)))
@@ -111,10 +131,7 @@ void Phonebook::searchContact()
             std::cout << "Invalid number, try again :" << std::endl;
             this->showContacts();
             if (!(std::getline(std::cin, cmd)))
-            {
-                
-                return ;
-            }
+                return 0;
             while (index == 0)
             {
                 try
@@ -127,11 +144,12 @@ void Phonebook::searchContact()
                     std::cerr << "Invalid number, try again : " << std::endl;
                     this->showContacts();
                     if (!(std::getline(std::cin, cmd)))
-                        return ;
+                        return 0;
                 }
             }
         }
         if (std::stoi(cmd) > 0)
             this->showContact(std::stoi(cmd));
     }
+    return 1;
 }

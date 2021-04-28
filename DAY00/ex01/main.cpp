@@ -5,8 +5,9 @@ int main()
 {
     std::string     cmd;
     Phonebook       myPhonebook;
+    int             status = 1;
 
-    while (1)
+    while (status == 1)
     {
         std::cout << "Enter your command: ADD, SEARCH or EXIT" << std::endl;
         if (!(std::getline(std::cin, cmd)))
@@ -14,13 +15,13 @@ int main()
         for (int i = 0; cmd[i] != 0; i++)
             cmd[i] = std::toupper(cmd[i]);
         if (cmd == "ADD")
-            myPhonebook.createContact();
+            status = myPhonebook.createContact();
         else if (cmd == "SEARCH")
-            myPhonebook.searchContact();
+            status = myPhonebook.searchContact();
         else if (cmd == "EXIT")
         {
             std::cout << "Goodbye!" << std::endl;
-            break ;
+            status = 0;
         }
         else
             std::cout << "This is not a valid command, try again" << std::endl;
