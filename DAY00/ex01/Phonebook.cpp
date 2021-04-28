@@ -39,7 +39,6 @@ void Phonebook::showContacts()
 {
     int i = 0;
 
-    std::cout << "Enter your contact number : " << std::endl;
     while (i <= m_contactNbr)
     {
         std::cout << i + 1 << "|";
@@ -70,30 +69,66 @@ void Phonebook::showContact(int inputUser)
     std::cout << "Darkest secret : " << m_contacts[inputUser - 1].getDarkestSecret() << std::endl;
 }
 
-bool Phonebook::isNumeric(std::string str) 
+bool Phonebook::isNoNumeric(std::string str) 
 {
-   for (unsigned long i = 0; i < str.length(); i++)
-      if (isdigit(str[i]) == false)
-         return false;
-      return true;
+    for (unsigned long i = 0; i < str.length(); i++)
+        if (!isdigit(str[i]))
+            return true;
+        return false;
 }
 
 void Phonebook::searchContact()
 {
-    std::string     inputUser;
+    int             index = 0;
+    std::string     cmd;
 
     if (m_contactNbr == -1)
-    {
         std::cout << "No contacts in your Phonebook, add one or exit!" << std::endl;
-        return ;
-    }
-    this->showContacts();
-    std::getline(std::cin, inputUser);
-    while (inputUser == "" || !isNumeric(inputUser))
+    else
     {
-        std::cout << "Wrong input" << std::endl;
-        std::cout << "Desired contact index: ";
-        std::getline(std::cin, inputUser);
+        std::cout << "Enter your contact number : " << std::endl;
+        this->showContacts();
+        if (!(std::getline(std::cin, cmd)))
+            return ;
+        while (index == 0)
+        {
+            try
+            {
+                std::stoi(cmd);
+                index = 1;
+            }
+            catch(std::exception const& e)
+            {
+                std::cerr << "Invalid number, try again : " << std::endl;
+                this->showContacts();
+                if (!(std::getline(std::cin, cmd)))
+                    return ;
+            }
+        }
+        while (!(std::stoi(cmd)) || (std::stoi(cmd) <= 0 || std::stoi(cmd) > this->m_contactNbr + 1 || isNoNumeric(cmd)))
+        {
+            index = 0;
+            std::cout << "Invalid number, try again :" << std::endl;
+            this->showContacts();
+            if (!(std::getline(std::cin, cmd)))
+                return ;
+            while (index == 0)
+            {
+                try
+                {
+                    std::stoi(cmd);
+                    index = 1;
+                }
+                catch(std::exception const& e)
+                {
+                    std::cerr << "Invalid number, try again : " << std::endl;
+                    this->showContacts();
+                    if (!(std::getline(std::cin, cmd)))
+                        return ;
+                }
+            }
+        }
+        if (std::stoi(cmd) > 0)
+            this->showContact(std::stoi(cmd));
     }
-    this->showContact(std::stoi(inputUser));
 }

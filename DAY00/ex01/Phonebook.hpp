@@ -6,6 +6,10 @@
 #include <string>
 #include <cctype>
 #include <limits>
+# include <sstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <exception>
 
 #include "Contact.hpp"
 
@@ -29,7 +33,7 @@ class Phonebook
         void searchContact();
         void showContacts();
         void showContact(int inputUser);
-        bool isNumeric(std::string str);
+        bool isNoNumeric(std::string str);
 };
 
 #endif
