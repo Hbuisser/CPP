@@ -12,18 +12,17 @@
 
 class ZombieEvent
 {
-    private:
-    
     public:
-        std::string     m_type;
-        std::string     m_name;
         ZombieEvent();
         ~ZombieEvent();
     
-        void            setZombieType(std::string type);
-        Zombie*         newZombie(std::string name);
+        void            setZombieType(Zombie &m, std::string type);
+        Zombie          *newZombie(std::string name);
         Zombie          randomChump();
-        void            announce();
+        void            announce(Zombie z) const;
+    
+    private:
+
 };
 
 #endif

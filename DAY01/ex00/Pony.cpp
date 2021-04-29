@@ -12,10 +12,10 @@ Pony::~Pony()
 
 void Pony::setName(std::string str)
 {
-    m_name = str;
+    this->m_name = str;
 }
 
-std::string Pony::getName()
+std::string Pony::getName() const
 {
-    return (m_name);
+    return (this->m_name);
 }

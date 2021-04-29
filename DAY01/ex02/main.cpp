@@ -4,20 +4,23 @@
 
 int main()
 {
-    Zombie      momo = Zombie("Momo", "Moche");
-    ZombieEvent randomBill;
-    ZombieEvent bill;
-
     std::cout << "========= Test for class Zombie :" << std::endl;
-    momo.announce();
+    Zombie momo = Zombie("Momo", "Moche");
+    Zombie mimi = Zombie("Mimi");
+    momo.advert();
+    mimi.advert();
 
     std::cout << "========= Test for class ZombieEvent :" << std::endl;
-    bill.setZombieType("Dangerous");
-    bill.newZombie("Bill");
-    bill.announce();
+    Zombie *mama;
+    ZombieEvent event;
+    mama = event.newZombie("Mama");
+    event.setZombieType(*mama, "Dangerous");
+    mama->advert();
+    delete mama;
 
     std::cout << "========= Test for class ZombieEvent (random) :" << std::endl;
-    randomBill.randomChump();
+    ZombieEvent random;
+    random.randomChump();
 
     return (0);
 }

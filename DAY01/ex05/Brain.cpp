@@ -47,3 +47,16 @@ Brain *Brain::identify()
 {
 	return (this);
 }
+
+
+//theorie :
+// thisétant un pointeur sur un objet,*thisest l'objet lui-même
+
+// Personnage* Personnage::getAdresse() const
+// {
+//     return this;
+// }
+// Duree& Duree::operator+=(const Duree &duree2)
+// {
+//     return *this;
+// }

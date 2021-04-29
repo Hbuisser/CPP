@@ -9,15 +9,15 @@ void ponyOnTheHeap();
 
 class Pony
 {
-    private:
-        std::string     m_name;
-
     public:
         Pony();
         ~Pony();
-
         void            setName(std::string str);
-        std::string     getName(void);
+        // const a la fin : on ne modifie pas l'instance courante
+        std::string     getName(void) const;
+
+    private:
+        std::string     m_name;
 };
 
 #endif
