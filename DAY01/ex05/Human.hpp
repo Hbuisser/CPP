@@ -11,16 +11,13 @@ class Human
 {
 	public:
 		Human();
-		//Human(Human const& copy);
 		~Human();
 		Human& operator=(Human const& copy);
-		Brain m_brain;
-		Brain *identify();
-		Brain &getBrain();
+		const Brain &getBrain() const;
+		const Brain *identify() const;
 
 	private:
-
-
+		const Brain m_brain;
 };
 
 #endif

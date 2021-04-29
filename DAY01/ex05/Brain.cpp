@@ -1,35 +1,13 @@
 # include "Brain.hpp"
 
-/*
-** CONSTRUCTORS
-*/
-
-// DEFAULT
 Brain::Brain()
 {
-
 }
-
-// COPY
-// Brain::Brain(Brain const& copy)
-// {
-// 	copy = 0;
-// }
-
-/*
-** DESTRUCTOR
-*/
 
 Brain::~Brain()
 {
-	
 }
 
-/*
-** OPERATORS
-*/
-
-// ASSIGNATION
 Brain &Brain::operator=(Brain const& copy)
 {
 	if (this != &copy)
@@ -39,18 +17,14 @@ Brain &Brain::operator=(Brain const& copy)
 	return *this;
 }
 
-/*
-** MEMBER FUNCTIONS
-*/
-
-Brain *Brain::identify()
+const Brain *Brain::identify() const
 {
 	return (this);
 }
 
 
-//theorie :
-// thisétant un pointeur sur un objet,*thisest l'objet lui-même
+////////////////////////////////////////////////////////////////////
+// this est un pointeur sur l'objet, *this est l'objet lui-même
 
 // Personnage* Personnage::getAdresse() const
 // {

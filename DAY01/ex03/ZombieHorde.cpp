@@ -23,17 +23,17 @@ ZombieHorde::ZombieHorde(int n) : m_n(n)
     for (int i = 0; i < m_n; i++)
     {
         sleep(1);
-        m_horde[i].ZombieSet(randomName(m_n), "Bad");
+        m_horde[i].zombieSet(randomName(m_n), "Bad");
     }
 }
 
 ZombieHorde::~ZombieHorde()
 {
-    delete [] m_horde;
+    delete [] this->m_horde;
 }
 
 void ZombieHorde::announce()
 {
-    for (int i = 0; i < m_n; i++)
+    for (int i = 0; i < this->m_n; i++)
         m_horde[i].announce();
 }

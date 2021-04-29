@@ -5,7 +5,7 @@
 int main()
 {
     std::cout << "========= Test ZombieHord class :" << std::endl;
-    ZombieHorde horde = ZombieHorde(10);
+    ZombieHorde horde(10);
     horde.announce();
     return (0);
 }

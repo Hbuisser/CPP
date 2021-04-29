@@ -8,16 +8,14 @@
 class Brain
 {
 	public:
-		std::string amygdal;
-		std::string cortex;
-
 		Brain();
-		//Brain(Brain const& copy);
 		~Brain();
 		Brain& operator=(Brain const& copy);
-		Brain *identify();
+		const Brain *identify() const;
+	
 	private:
-
+		std::string amygdal;
+		std::string cortex;
 };
 
 #endif

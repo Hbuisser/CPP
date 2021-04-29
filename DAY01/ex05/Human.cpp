@@ -1,36 +1,16 @@
 
 # include "Human.hpp"
 
-/*
-** CONSTRUCTORS
-*/
-
-// DEFAULT
 Human::Human()
 {
 	std::cout << "Human++" << std::endl;
 }
-
-// COPY
-// Human::Human(Human const& copy)
-// {
-
-// }
-
-/*
-** DESTRUCTOR
-*/
 
 Human::~Human()
 {
 	std::cout << "Human--" << std::endl;
 }
 
-/*
-** OPERATORS
-*/
-
-// ASSIGNATION
 Human& Human::operator=(Human const& copy)
 {
 	if (this != &copy)
@@ -40,17 +20,12 @@ Human& Human::operator=(Human const& copy)
 	return *this;
 }
 
-/*
-** MEMBER FUNCTIONS
-*/
-
-Brain &Human::getBrain()
+const Brain &Human::getBrain() const 
 {
-	return m_brain;
+	return this->m_brain;
 }
 
-Brain *Human::identify()
+const Brain *Human::identify() const
 {
-	return m_brain.identify();
+	return this->m_brain.identify();
 }
-

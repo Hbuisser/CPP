@@ -11,14 +11,17 @@
 class Zombie
 {
     private:
-    
-    public:
         std::string     m_name;
         std::string     m_type;
+    
+    public:
         Zombie();
-        void            ZombieSet(std::string name, std::string type);
-        void            announce();
+        Zombie(std::string name, std::string type);
+        Zombie(std::string name);
         ~Zombie();
+        void announce() const;
+        void setType(std::string type);
+        void zombieSet(std::string name, std::string type);
 };
 
 #endif

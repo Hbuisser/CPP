@@ -11,19 +11,16 @@ int main(int argc, char **argv)
 {
     if (argc != 4)
 		return (error("Error : arguments not valid"));
-
 	std::string fileName = argv[1];
 	std::string s1 = argv[2];
 	std::string s2 = argv[3];
     std::ifstream myReadFile(fileName);
     if (!myReadFile)
         return (error("Error : File can't open"));
-
     fileName += ".replace";
     std::ofstream myCreatedFile(fileName);
     if (!myCreatedFile)
         return (error("Error : File can't be created"));
-    
     char c;
     int i = 0;
     int j = 0;
@@ -47,8 +44,8 @@ int main(int argc, char **argv)
             i = 0;
         }
     }
-    //myCreatedFile.close();
-    //myReadFile.close();
+    myCreatedFile.close();
+    myReadFile.close();
     return (0);
 }
 

@@ -11,7 +11,6 @@ class HumanA
 {
 	public:
 		HumanA();
-		//HumanA(HumanA const& copy);
 		HumanA(std::string name, Weapon &weapon);
 		~HumanA();
 		HumanA& operator=(HumanA const& copy);
