@@ -98,7 +98,7 @@ int main()
 	PresidentialPardonForm 	p_form("TheP");
 
     std::cout << "__________Bureaucrat test______________" << std::endl;
-    test_bureaucrat(s_form);
+    test_bureaucrat(r_form);
 
     std::cout << "__________Shrubbery test______________" << std::endl;
 	test_form(bob, s_form);

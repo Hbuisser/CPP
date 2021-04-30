@@ -5,7 +5,6 @@
 ** CONSTRUCTORS
 */
 
-// DEFAULT
 Fixed::Fixed() : m_fixedValue(0)
 {
 	std::cout << "Default constructor called" << std::endl;
@@ -46,6 +45,8 @@ Fixed::~Fixed()
 */
 
 // ASSIGNATION
+// L'instance courante va etre modifiee donc la fct n'est pas const
+// en pratique, c++ cache tjs l'instance courante en premier parametre
 Fixed& Fixed::operator=(Fixed const& copy)
 {
 	std::cout << "Assignation operator called" << std::endl;
@@ -55,6 +56,13 @@ Fixed& Fixed::operator=(Fixed const& copy)
 	}
 	m_fixedValue = copy.getRawBits();
 	return *this;
+}
+
+std::ostream &operator<<(std::ostream &output_stream, const Fixed &f)
+{
+	// Goal is to be able to insert into output streams like std::cout, 
+	// it returns the output stream with its floating point inserted in it.
+  	return (output_stream << f.toFloat());
 }
 
 /*
@@ -85,18 +93,14 @@ int Fixed::toInt(void) const
 	return (m_fixedValue >> m_bitsNbr);
 }
 
+
+
+///////////////////////////////////////////////////////////////////////////////
 // << >> shifting can be used to change the binary point position.
 // Casting can also be used to set the binary point at a certain position, 
 // if you cast to int you set the binary point to position zero
 
 // << Takes two numbers, left shifts the bits of the first operand, 
 // the second operand decides the number of places to shift.
-// (x<<y) is equivalent to multiplying x with 2^y (2 raise to power y).
+// (x<<y) is equivalent to multiplying x with 2^y.
 // Right shifting, shifts bytes to the right and is equivalent to dividing x with 2^y
-
-std::ostream &operator<<(std::ostream &output_stream, const Fixed &f)
-{
-	// Goal is to be able to insert into output streams like std::cout, 
-	// it returns the output stream with its floating point inserted in it.
-  	return (output_stream << f.toFloat());
-}

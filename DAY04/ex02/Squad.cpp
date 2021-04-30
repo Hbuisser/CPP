@@ -46,6 +46,7 @@ Squad::~Squad()
 
 // ASSIGNATION
 // deepcopy means a copy on another memory address
+// https://www.youtube.com/watch?v=kiET23bMTic
 Squad& Squad::operator=(Squad const& copy)
 {
 	while (m_squadList != nullptr)

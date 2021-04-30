@@ -34,7 +34,6 @@ FragTrap::FragTrap(std::string name) : m_name(name)
 
 // COPY
 FragTrap::FragTrap(FragTrap const& copy)
-//FragTrap::FragTrap(FragTrap const& copy) : FragTrap(copy)
 {
 	
 }

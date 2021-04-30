@@ -45,7 +45,7 @@ NinjaTrap::NinjaTrap(NinjaTrap const& copy)
 
 NinjaTrap::~NinjaTrap()
 {
-	
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic destructor call" << std::endl;
 }
 
 /*

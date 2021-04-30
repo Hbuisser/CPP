@@ -14,7 +14,8 @@ struct List
 {
 	std::string 	name;
 	Form 			*(*fct)(std::string);
-	//Function pointers, takes the adress of a function
+	// Pointeur sur fct qui renvoie un pointeur sur class form
+	// Function pointers, takes the adress of a function
 };
 
 class Intern

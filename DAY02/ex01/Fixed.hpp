@@ -23,6 +23,7 @@ class Fixed
 
 	private:
 		int 				m_fixedValue;
+		// static variable : share memory with all the instances of the class
 		static const int 	m_bitsNbr = 8;
 };
 

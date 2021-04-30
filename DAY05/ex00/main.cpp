@@ -19,6 +19,7 @@ int main()
         std::cerr << "ERROR : " << e.what() << std::endl;
     }
     std::cout << henry.getGrade() << std::endl; // doit retourner 149
+    std::cout << henry;
     std::cout << "________________________" << std::endl;
     try
     {
@@ -55,6 +56,7 @@ int main()
     std::cout << "________________________" << std::endl;
     Bureaucrat *bob = new Bureaucrat("Bob", 42);
     std::cout << bob->getGrade() << std::endl; // doit retourner 42
+    std::cout << *bob;
     std::cout << "________________________" << std::endl;
     Bureaucrat *boby;
     try

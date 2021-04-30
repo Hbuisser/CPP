@@ -45,7 +45,7 @@ ClapTrap::ClapTrap(ClapTrap const& copy)
 
 ClapTrap::~ClapTrap()
 {
-	
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic destructor call" << std::endl;
 }
 
 /*

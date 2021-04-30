@@ -45,7 +45,7 @@ ScavTrap::ScavTrap(ScavTrap const& copy)
 
 ScavTrap::~ScavTrap()
 {
-	
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic destructor call" << std::endl;
 }
 
 /*
