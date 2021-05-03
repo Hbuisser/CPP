@@ -13,8 +13,6 @@ class ClapTrap
 		ClapTrap(ClapTrap const& copy);
 		~ClapTrap();
 		ClapTrap& operator=(ClapTrap const& copy);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
 
 	protected:
 		int m_hitPoints;

@@ -36,7 +36,8 @@ ClapTrap::ClapTrap(std::string name)
 // COPY
 ClapTrap::ClapTrap(ClapTrap const& copy)
 {
-	
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Copy constructor call" << std::endl;
+	*this = copy;
 }
 
 /*
@@ -55,34 +56,16 @@ ClapTrap::~ClapTrap()
 // ASSIGNATION
 ClapTrap& ClapTrap::operator=(ClapTrap const& copy)
 {
-	if (this != &copy)
-	{
-		
-	}
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Assignation constructor call" << std::endl;
+	m_hitPoints = copy.m_hitPoints;
+	m_maxHitPoints = copy.m_maxHitPoints;
+	m_energyPoints = copy.m_energyPoints;
+	m_maxEnergyPoints = copy.m_maxEnergyPoints;
+	m_level = copy.m_level;
+	m_name = copy.m_name;
+	m_meleeAttackDamage = copy.m_meleeAttackDamage;
+	m_rangedAttackDamage = copy.m_rangedAttackDamage;
+	m_armorDamageReduction = copy.m_armorDamageReduction;
+
 	return *this;
-}
-
-/*
-** MEMBER FUNCTIONS
-*/
-
-void ClapTrap::takeDamage(unsigned int amount)
-{
-	int damage;
-	damage = amount - m_armorDamageReduction;
-	std::cout << "FR4G-TP " << m_name << " takes damage and loses " << damage << " hit points" << std::endl;
-	m_hitPoints -= amount;
-    m_hitPoints += m_armorDamageReduction;
-    if (m_hitPoints < 0)
-    	m_hitPoints = 0;
-	if (m_hitPoints > m_maxHitPoints)
-		m_hitPoints = m_maxHitPoints;
-}
-
-void ClapTrap::beRepaired(unsigned int amount)
-{
-	std::cout << "FR4G-TP " << m_name << " regenerates " << amount << " hit points" << std::endl;
-	m_hitPoints += amount;
-	if (m_hitPoints > m_maxHitPoints)
-    	m_hitPoints = m_maxHitPoints;
 }

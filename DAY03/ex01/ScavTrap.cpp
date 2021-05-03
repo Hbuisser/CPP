@@ -36,7 +36,8 @@ ScavTrap::ScavTrap(std::string name) : m_name(name)
 // COPY
 ScavTrap::ScavTrap(ScavTrap const& copy)
 {
-	
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Copy constructor call" << std::endl;
+	*this = copy;
 }
 
 /*
@@ -55,10 +56,17 @@ ScavTrap::~ScavTrap()
 // ASSIGNATION
 ScavTrap& ScavTrap::operator=(ScavTrap const& copy)
 {
-	if (this != &copy)
-	{
-		
-	}
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Assignation constructor call" << std::endl;
+	m_hitPoints = copy.m_hitPoints;
+	m_maxHitPoints = copy.m_maxHitPoints;
+	m_energyPoints = copy.m_energyPoints;
+	m_maxEnergyPoints = copy.m_maxEnergyPoints;
+	m_level = copy.m_level;
+	m_name = copy.m_name;
+	m_meleeAttackDamage = copy.m_meleeAttackDamage;
+	m_rangedAttackDamage = copy.m_rangedAttackDamage;
+	m_armorDamageReduction = copy.m_armorDamageReduction;
+
 	return *this;
 }
 
@@ -89,14 +97,20 @@ void ScavTrap::meleeAttack(std::string const& target)
 void ScavTrap::takeDamage(unsigned int amount)
 {
 	int damage;
-	damage = amount - m_armorDamageReduction;
-	std::cout << "SCAVVVVV " << m_name << " takes damage and loses " << damage << " hit points" << std::endl;
-	m_hitPoints -= amount;
-    m_hitPoints += m_armorDamageReduction;
-    if (m_hitPoints < 0)
-    	m_hitPoints = 0;
-	if (m_hitPoints > m_maxHitPoints)
-		m_hitPoints = m_maxHitPoints;
+
+	if (amount > m_armorDamageReduction)
+	{
+		damage = amount - m_armorDamageReduction;
+		std::cout << "SCAVVVVV " << m_name << " takes damage and loses " << damage << " hit points" << std::endl;
+		m_hitPoints -= amount;
+		m_hitPoints += m_armorDamageReduction;
+		if (m_hitPoints < 0)
+			m_hitPoints = 0;
+		if (m_hitPoints > m_maxHitPoints)
+			m_hitPoints = m_maxHitPoints;
+	}
+	else
+		std::cout << "SCAVVVVV " << m_name << " didn't receive any damage. The Armor is stronger than the attack" << std::endl;
 }
 
 void ScavTrap::beRepaired(unsigned int amount)

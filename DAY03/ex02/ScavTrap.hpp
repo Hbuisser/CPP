@@ -6,6 +6,7 @@
 # include <string>
 
 # include "FragTrap.hpp"
+# include "ClapTrap.hpp"
 
 class ScavTrap : public ClapTrap
 {
@@ -19,6 +20,8 @@ class ScavTrap : public ClapTrap
 		void getEnergyPoints();
 		void rangedAttack(std::string const & target);
 		void meleeAttack(std::string const & target);
+		void takeDamage(unsigned int amount);
+		void beRepaired(unsigned int amount);
 		void challengeNewcomer();
 
 	private:
