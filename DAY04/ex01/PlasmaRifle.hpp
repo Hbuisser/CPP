@@ -12,7 +12,7 @@ class PlasmaRifle : public AWeapon
 	public:
 		PlasmaRifle();
 		PlasmaRifle(PlasmaRifle const& copy);
-		~PlasmaRifle();
+		virtual ~PlasmaRifle();
 		PlasmaRifle& operator=(PlasmaRifle const& copy);
 		void attack() const;
 

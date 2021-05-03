@@ -12,9 +12,9 @@ PlasmaRifle::PlasmaRifle() : AWeapon("Plasma Rifle", 5, 21)
 }
 
 // COPY
-PlasmaRifle::PlasmaRifle(PlasmaRifle const&)
+PlasmaRifle::PlasmaRifle(PlasmaRifle const& other) : AWeapon(other)
 {
-	
+	*this = other;
 }
 
 /*
@@ -35,7 +35,7 @@ PlasmaRifle& PlasmaRifle::operator=(PlasmaRifle const& copy)
 {
 	if (this != &copy)
 	{
-		
+		AWeapon::operator=(copy);
 	}
 	return *this;
 }

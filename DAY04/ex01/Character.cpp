@@ -18,7 +18,7 @@ Character::Character(std::string const & name) : m_name(name)
 }
 
 // COPY
-Character::Character(Character const&)
+Character::Character(Character const& copy) : m_name(copy.m_name), m_AP(copy.m_AP), m_ptr(copy.m_ptr)
 {
 	
 }
@@ -29,7 +29,8 @@ Character::Character(Character const&)
 
 Character::~Character()
 {
-	
+	delete m_ptr;
+	m_ptr = 0;
 }
 
 /*
@@ -39,10 +40,8 @@ Character::~Character()
 // ASSIGNATION
 Character& Character::operator=(Character const& copy)
 {
-	if (this != &copy)
-	{
-		
-	}
+	m_name = copy.m_name;
+	m_AP = copy.m_AP;
 	return *this;
 }
 

@@ -12,9 +12,9 @@ SuperMutant::SuperMutant() : Enemy(170, "Super Mutant")
 }
 
 // COPY
-SuperMutant::SuperMutant(SuperMutant const&)
+SuperMutant::SuperMutant(SuperMutant const& copy) : Enemy(copy)
 {
-	
+	std::cout << "Gaaah. Break everything !" << std::endl;
 }
 
 /*
@@ -35,7 +35,7 @@ SuperMutant& SuperMutant::operator=(SuperMutant const& copy)
 {
 	if (this != &copy)
 	{
-		
+		Enemy::operator=(copy);
 	}
 	return *this;
 }

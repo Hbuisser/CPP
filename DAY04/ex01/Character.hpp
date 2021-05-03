@@ -11,9 +11,10 @@
 class Character
 {
 	public:
+		Character();
 		Character(std::string const& name);
 		Character(Character const& copy);
-		~Character();
+		virtual ~Character();
 		Character& operator=(Character const& copy);
 
 		void recoverAP();
@@ -27,7 +28,6 @@ class Character
 		int getAP() const;
 
 	private:
-		Character();
 		std::string m_name;
 		int 		m_AP;
 		AWeapon 	*m_ptr;

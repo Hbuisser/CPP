@@ -17,7 +17,7 @@ class Sorcerer
 		Sorcerer(std::string name, std::string title);
 		Sorcerer(Sorcerer const& copy);
 		// un destructeur doit toujours être virtuel si on utilise le polymorphisme
-		~Sorcerer();
+		virtual ~Sorcerer();
 		Sorcerer& operator=(Sorcerer const& copy);
 
 		void announce() const;

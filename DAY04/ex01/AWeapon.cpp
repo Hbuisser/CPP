@@ -17,7 +17,7 @@ AWeapon::AWeapon(std::string const& name, int apcost, int damage) : m_name(name)
 }
 
 // COPY
-AWeapon::AWeapon(AWeapon const&)
+AWeapon::AWeapon(AWeapon const& copy) : m_name(copy.m_name), m_damage(copy.m_damage), m_apcost(copy.m_apcost)
 {
 	
 }
@@ -38,10 +38,10 @@ AWeapon::~AWeapon()
 // ASSIGNATION
 AWeapon& AWeapon::operator=(AWeapon const& copy)
 {
-	if (this != &copy)
-	{
-		
-	}
+	m_name = copy.m_name;
+	m_apcost = copy.m_apcost;
+	m_damage = copy.m_damage;
+
 	return *this;
 }
 

@@ -17,7 +17,7 @@ Enemy::Enemy(int hp, std::string const& type) : m_hp(hp), m_type(type)
 }
 
 // COPY
-Enemy::Enemy(Enemy const&)
+Enemy::Enemy(Enemy const& copy) : m_hp(copy.m_hp), m_type(copy.m_type)
 {
 	
 }
@@ -40,7 +40,7 @@ Enemy& Enemy::operator=(Enemy const& copy)
 {
 	if (this != &copy)
 	{
-		
+		*this = copy;
 	}
 	return *this;
 }

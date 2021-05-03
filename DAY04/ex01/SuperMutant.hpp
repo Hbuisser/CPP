@@ -12,7 +12,7 @@ class SuperMutant : public Enemy
 	public:
 		SuperMutant();
 		SuperMutant(SuperMutant const& copy);
-		~SuperMutant();
+		virtual ~SuperMutant();
 		SuperMutant& operator=(SuperMutant const& copy);
 
 		void takeDamage(int i);

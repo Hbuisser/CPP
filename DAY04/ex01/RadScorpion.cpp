@@ -12,9 +12,9 @@ RadScorpion::RadScorpion() : Enemy(80, "RadScorpion")
 }
 
 // COPY
-RadScorpion::RadScorpion(RadScorpion const&)
+RadScorpion::RadScorpion(RadScorpion const& copy) : Enemy(copy)
 {
-	
+	std::cout << "* click click click *" << std::endl;
 }
 
 /*
@@ -35,7 +35,7 @@ RadScorpion& RadScorpion::operator=(RadScorpion const& copy)
 {
 	if (this != &copy)
 	{
-		
+		Enemy::operator=(copy);
 	}
 	return *this;
 }

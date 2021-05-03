@@ -12,9 +12,9 @@ PowerFist::PowerFist() : AWeapon("Power Fist", 8, 50)
 }
 
 // COPY
-PowerFist::PowerFist(PowerFist const&)
+PowerFist::PowerFist(PowerFist const& copy) : AWeapon(copy)
 {
-	
+	*this = copy;
 }
 
 /*
@@ -35,7 +35,7 @@ PowerFist& PowerFist::operator=(PowerFist const& copy)
 {
 	if (this != &copy)
 	{
-		
+		AWeapon::operator=(copy);
 	}
 	return *this;
 }
