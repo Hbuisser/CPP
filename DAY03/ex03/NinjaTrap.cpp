@@ -36,7 +36,8 @@ NinjaTrap::NinjaTrap(std::string name)
 // COPY
 NinjaTrap::NinjaTrap(NinjaTrap const& copy)
 {
-	
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Copy constructor call" << std::endl;
+	*this = copy;
 }
 
 /*
@@ -55,10 +56,17 @@ NinjaTrap::~NinjaTrap()
 // ASSIGNATION
 NinjaTrap& NinjaTrap::operator=(NinjaTrap const& copy)
 {
-	if (this != &copy)
-	{
-		
-	}
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Assignation constructor call" << std::endl;
+	m_hitPoints = copy.m_hitPoints;
+	m_maxHitPoints = copy.m_maxHitPoints;
+	m_energyPoints = copy.m_energyPoints;
+	m_maxEnergyPoints = copy.m_maxEnergyPoints;
+	m_level = copy.m_level;
+	m_name = copy.m_name;
+	m_meleeAttackDamage = copy.m_meleeAttackDamage;
+	m_rangedAttackDamage = copy.m_rangedAttackDamage;
+	m_armorDamageReduction = copy.m_armorDamageReduction;
+	
 	return *this;
 }
 
