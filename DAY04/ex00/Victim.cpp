@@ -8,7 +8,7 @@
 // DEFAULT
 Victim::Victim()
 {
-	
+	std::cout << "Some random victim called " << m_name << " just appeared!" << std::endl; 
 }
 
 
@@ -18,9 +18,9 @@ Victim::Victim(std::string name) : m_name(name)
 }
 
 // COPY
-Victim::Victim(Victim const&)
+Victim::Victim(Victim const& copy) : m_name(copy.m_name)
 {
-	
+	std::cout << "Some random victim called " << m_name << " just appeared!" << std::endl; 
 }
 
 /*
@@ -41,7 +41,8 @@ Victim& Victim::operator=(Victim const& copy)
 {
 	if (this != &copy)
 	{
-		
+		m_name = copy.m_name;
+		std::cout << "All Victims are Equal !!" << std::endl;
 	}
 	return *this;
 }

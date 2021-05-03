@@ -5,26 +5,69 @@
 #include "Victim.hpp"
 #include "Peon.hpp"
 
-int main()
+// int main()
+// {
+//     Sorcerer robert("Robert", "the Magnificent");
+//     Victim jim("Jimmy");
+//     Peon joe("Joe");
+//     std::cout << robert << jim << joe;
+//     robert.polymorph(jim);
+//     robert.polymorph(joe);
+//     return 0;
+// }
+
+int main(void)
 {
-    Sorcerer robert("Robert", "the Magnificent");
-    Victim jim("Jimmy");
-    Peon joe("Joe");
-    std::cout << robert << jim << joe;
-    robert.polymorph(jim);
-    robert.polymorph(joe);
-    return 0;
+    {
+        std::cout << "_______________SORCERER_________________" << std::endl;
+        Sorcerer A("Henry", "Le King");
+        Sorcerer B("Jo", "Le sorcier");
+        Sorcerer C(A);
 
-    // std::cout << "__________Sorcerer and Victim class test___________" << std::endl;
-    // Sorcerer guy("Guy", "Grand Sorcier");
-    // guy.announce();
-    // Victim albert("Albert");
-    // albert.announce();
+        std::cout << B;
+        B = A;
+		std::cout << std::endl << "______________Jo Introduction" << std::endl;
+		B.announce();
+        std::cout << B;
+    }
+    {
+        std::cout << std::endl << "____________________VICTIM_______________" << std::endl;
+        Victim v1("Bob");
+		std::cout << std::endl << "_______________Introduction" << std::endl;
+        std::cout << v1;
+		v1.getPolymorphed();
+    }
+    {
+        std::cout << std::endl << "_____________________PEON__________________" << std::endl;
+        Peon v2("Bill");
+        std::cout << v2;
+		v2.getPolymorphed();
+    }
+	{
+		std::cout << std::endl << "__________________ALL FOR ONE______________" << std::endl;
+		Sorcerer	s("Henry", "The King");
+		Victim		*v, *p;
 
-    // std::cout << "__________Polymorph test___________" << std::endl;
-    // guy.polymorph(albert);
+		v = new Victim;
+		p = new Peon;
 
-    // std::cout << "__________End of the program : dead of everybody___________" << std::endl;
+		std::cout << std::endl << "___________________Polymorph The Victim" << std::endl;
+		s.polymorph(*v);
+		std::cout << std::endl << "___________________Polymorph The Peon" << std::endl;
+		s.polymorph(*p);
 
-    //return (0);
+		delete v;
+		delete p;
+	}
+    {
+        std::cout << std::endl << "___________________GIVEN TESTS__________________" << std::endl;
+
+        Sorcerer	robert("Robert", "the Magnificent");
+        Victim		jim("Jimmy");
+        Peon		joe("Joe");
+        std::cout << robert << jim << joe;
+        robert.polymorph(jim);
+        robert.polymorph(joe);
+    }
+    return (0);
 }

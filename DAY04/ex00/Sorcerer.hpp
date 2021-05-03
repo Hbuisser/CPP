@@ -24,9 +24,9 @@ class Sorcerer
 		void polymorph(Victim const&) const;
 
 	private:
+		Sorcerer();
 		std::string m_name;
 		std::string m_title;
-		Sorcerer();
 
 
 };

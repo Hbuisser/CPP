@@ -35,7 +35,9 @@ Sorcerer& Sorcerer::operator=(Sorcerer const& copy)
 {
 	if (this != &copy)
 	{
-		
+		m_name = copy.m_name;
+		m_title = copy.m_title;
+		std::cout << "A new me is born !" << std::endl;
 	}
 	return *this;
 }

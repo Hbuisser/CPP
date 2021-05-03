@@ -8,7 +8,7 @@
 // DEFAULT
 Peon::Peon() : Victim()
 {
-	
+	std::cout << "Zog zog." << std::endl;
 }
 
 Peon::Peon(std::string name) : Victim(name), m_name(name)
@@ -17,8 +17,9 @@ Peon::Peon(std::string name) : Victim(name), m_name(name)
 }
 
 // COPY
-Peon::Peon(Peon const&)
+Peon::Peon(Peon const& copy) : Victim(copy), m_name(copy.m_name)
 {
+	std::cout << "Zog zog." << std::endl;
 }
 
 /*
@@ -39,7 +40,7 @@ Peon& Peon::operator=(Peon const& copy)
 {
 	if (this != &copy)
 	{
-		
+		m_name = copy.m_name;
 	}
 	return *this;
 }
