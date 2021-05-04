@@ -13,8 +13,6 @@ class FragTrap
 		FragTrap(FragTrap const& copy);
 		~FragTrap();
 		FragTrap& operator=(FragTrap const& copy);
-		void getHitPoints();
-		void getEnergyPoints();
 		void rangedAttack(std::string const& target);
 		void meleeAttack(std::string const& target);
 		void takeDamage(unsigned int amount);

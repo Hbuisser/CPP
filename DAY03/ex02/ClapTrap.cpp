@@ -8,6 +8,7 @@
 // DEFAULT
 ClapTrap::ClapTrap()
 {
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& CLAP Magic constructor call" << std::endl;
 	m_hitPoints = 0;
 	m_maxHitPoints = 0;
 	m_energyPoints = 0;
@@ -21,7 +22,7 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& CLAP Magic constructor call" << std::endl;
 	m_hitPoints = 0;
 	m_maxHitPoints = 0;
 	m_energyPoints = 0;
@@ -36,7 +37,7 @@ ClapTrap::ClapTrap(std::string name)
 // COPY
 ClapTrap::ClapTrap(ClapTrap const& copy)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Copy constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& CLAP Copy constructor call" << std::endl;
 	*this = copy;
 }
 
@@ -46,7 +47,7 @@ ClapTrap::ClapTrap(ClapTrap const& copy)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic destructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& CLAP Magic destructor call" << std::endl;
 }
 
 /*
@@ -56,7 +57,7 @@ ClapTrap::~ClapTrap()
 // ASSIGNATION
 ClapTrap& ClapTrap::operator=(ClapTrap const& copy)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Assignation constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& CLAP Assignation constructor call" << std::endl;
 	m_hitPoints = copy.m_hitPoints;
 	m_maxHitPoints = copy.m_maxHitPoints;
 	m_energyPoints = copy.m_energyPoints;

@@ -6,8 +6,9 @@
 */
 
 // DEFAULT
-NinjaTrap::NinjaTrap()
+NinjaTrap::NinjaTrap() : ClapTrap("")
 {
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& NINJA Magic constructor call" << std::endl;
 	m_hitPoints = 60;
 	m_maxHitPoints = 60;
 	m_energyPoints = 120;
@@ -19,9 +20,9 @@ NinjaTrap::NinjaTrap()
 	m_armorDamageReduction = 0;
 }
 
-NinjaTrap::NinjaTrap(std::string name)
+NinjaTrap::NinjaTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& NINJA Magic constructor call" << std::endl;
 	m_hitPoints = 60;
 	m_maxHitPoints = 60;
 	m_energyPoints = 120;
@@ -33,10 +34,19 @@ NinjaTrap::NinjaTrap(std::string name)
 	m_armorDamageReduction = 0;
 }
 
+NinjaTrap::NinjaTrap(int i) : ClapTrap("")
+{
+	i = 0;
+	m_energyPoints = 120;
+	m_maxEnergyPoints = 120;
+	m_meleeAttackDamage = 60;
+}
+
 // COPY
 NinjaTrap::NinjaTrap(NinjaTrap const& copy)
 {
-	
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& NINJA Copy constructor call" << std::endl;
+	*this = copy;
 }
 
 /*
@@ -45,7 +55,7 @@ NinjaTrap::NinjaTrap(NinjaTrap const& copy)
 
 NinjaTrap::~NinjaTrap()
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic destructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& NINJA Magic destructor call" << std::endl;
 }
 
 /*
@@ -57,7 +67,16 @@ NinjaTrap& NinjaTrap::operator=(NinjaTrap const& copy)
 {
 	if (this != &copy)
 	{
-		
+		std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& NINJA Assignation constructor call" << std::endl;
+		m_hitPoints = copy.m_hitPoints;
+		m_maxHitPoints = copy.m_maxHitPoints;
+		m_energyPoints = copy.m_energyPoints;
+		m_maxEnergyPoints = copy.m_maxEnergyPoints;
+		m_level = copy.m_level;
+		m_name = copy.m_name;
+		m_meleeAttackDamage = copy.m_meleeAttackDamage;
+		m_rangedAttackDamage = copy.m_rangedAttackDamage;
+		m_armorDamageReduction = copy.m_armorDamageReduction;
 	}
 	return *this;
 }
@@ -65,16 +84,6 @@ NinjaTrap& NinjaTrap::operator=(NinjaTrap const& copy)
 /*
 ** MEMBER FUNCTIONS
 */
-
-void NinjaTrap::getHitPoints()
-{
-	std::cout << "=========> " << m_name << " has " << m_hitPoints << " hit points" << std::endl;
-}
-
-void NinjaTrap::getEnergyPoints()
-{
-	std::cout << "=========> " << m_name << " has " << m_energyPoints << " energy points" << std::endl;
-}
 
 std::string NinjaTrap::getName() const
 {

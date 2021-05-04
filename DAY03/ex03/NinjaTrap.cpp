@@ -8,6 +8,7 @@
 // DEFAULT
 NinjaTrap::NinjaTrap()
 {
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& NINJA Magic constructor call" << std::endl;
 	m_hitPoints = 60;
 	m_maxHitPoints = 60;
 	m_energyPoints = 120;
@@ -21,7 +22,7 @@ NinjaTrap::NinjaTrap()
 
 NinjaTrap::NinjaTrap(std::string name)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& NINJA Magic constructor call" << std::endl;
 	m_hitPoints = 60;
 	m_maxHitPoints = 60;
 	m_energyPoints = 120;
@@ -36,7 +37,7 @@ NinjaTrap::NinjaTrap(std::string name)
 // COPY
 NinjaTrap::NinjaTrap(NinjaTrap const& copy)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Copy constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& NINJA Copy constructor call" << std::endl;
 	*this = copy;
 }
 
@@ -46,7 +47,7 @@ NinjaTrap::NinjaTrap(NinjaTrap const& copy)
 
 NinjaTrap::~NinjaTrap()
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic destructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& NINJA Magic destructor call" << std::endl;
 }
 
 /*
@@ -56,7 +57,7 @@ NinjaTrap::~NinjaTrap()
 // ASSIGNATION
 NinjaTrap& NinjaTrap::operator=(NinjaTrap const& copy)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Assignation constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& NINJA Assignation constructor call" << std::endl;
 	m_hitPoints = copy.m_hitPoints;
 	m_maxHitPoints = copy.m_maxHitPoints;
 	m_energyPoints = copy.m_energyPoints;
@@ -73,21 +74,6 @@ NinjaTrap& NinjaTrap::operator=(NinjaTrap const& copy)
 /*
 ** MEMBER FUNCTIONS
 */
-
-void NinjaTrap::getHitPoints()
-{
-	std::cout << "=========> " << m_name << " has " << m_hitPoints << " hit points" << std::endl;
-}
-
-void NinjaTrap::getEnergyPoints()
-{
-	std::cout << "=========> " << m_name << " has " << m_energyPoints << " energy points" << std::endl;
-}
-
-std::string NinjaTrap::getName() const
-{
-	return (m_name);
-}
 
 void NinjaTrap::rangedAttack(std::string const& target)
 {

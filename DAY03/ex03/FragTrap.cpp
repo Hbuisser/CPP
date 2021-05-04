@@ -8,6 +8,7 @@
 // DEFAULT
 FragTrap::FragTrap()
 {
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& FRAG Magic constructor call" << std::endl;
 	m_hitPoints = 100;
 	m_maxHitPoints = 100;
 	m_energyPoints = 100;
@@ -21,7 +22,7 @@ FragTrap::FragTrap()
 
 FragTrap::FragTrap(std::string name)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& FRAG Magic constructor call" << std::endl;
 	m_hitPoints = 100;
 	m_maxHitPoints = 100;
 	m_energyPoints = 100;
@@ -36,7 +37,7 @@ FragTrap::FragTrap(std::string name)
 // COPY
 FragTrap::FragTrap(FragTrap const& copy)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Copy constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& FRAG Copy constructor call" << std::endl;
 	*this = copy;
 }
 
@@ -46,7 +47,7 @@ FragTrap::FragTrap(FragTrap const& copy)
 
 FragTrap::~FragTrap()
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic destructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& FRAG Magic destructor call" << std::endl;
 }
 
 /*
@@ -56,7 +57,7 @@ FragTrap::~FragTrap()
 // ASSIGNATION
 FragTrap& FragTrap::operator=(FragTrap const& copy)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Assignation constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& FRAG Assignation constructor call" << std::endl;
 	m_hitPoints = copy.m_hitPoints;
 	m_maxHitPoints = copy.m_maxHitPoints;
 	m_energyPoints = copy.m_energyPoints;
@@ -73,21 +74,6 @@ FragTrap& FragTrap::operator=(FragTrap const& copy)
 /*
 ** MEMBER FUNCTIONS
 */
-
-void FragTrap::getHitPoints()
-{
-	std::cout << "=========> " << m_name << " has " << m_hitPoints << " hit points" << std::endl;
-}
-
-void FragTrap::getEnergyPoints()
-{
-	std::cout << "=========> " << m_name << " has " << m_energyPoints << " energy points" << std::endl;
-}
-
-std::string FragTrap::getName() const
-{
-	return (m_name);
-}
 
 void FragTrap::rangedAttack(std::string const& target)
 {

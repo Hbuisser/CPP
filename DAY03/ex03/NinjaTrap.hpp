@@ -17,10 +17,6 @@ class NinjaTrap : public ClapTrap
 		NinjaTrap(NinjaTrap const& copy);
 		~NinjaTrap();
 		NinjaTrap& operator=(NinjaTrap const& copy);
-
-		void getHitPoints();
-		void getEnergyPoints();
-		std::string getName() const;
 		
 		void rangedAttack(std::string const & target);
 		void meleeAttack(std::string const & target);

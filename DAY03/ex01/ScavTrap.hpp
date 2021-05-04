@@ -15,8 +15,6 @@ class ScavTrap : FragTrap
 		ScavTrap(ScavTrap const& copy);
 		~ScavTrap();
 		ScavTrap& operator=(ScavTrap const& copy);
-		void getHitPoints();
-		void getEnergyPoints();
 		void rangedAttack(std::string const & target);
 		void meleeAttack(std::string const & target);
 		void takeDamage(unsigned int amount);

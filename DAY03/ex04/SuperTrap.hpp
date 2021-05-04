@@ -12,20 +12,18 @@
 class SuperTrap : public FragTrap, public NinjaTrap
 {
 	public:
-		SuperTrap();
 		SuperTrap(std::string name);
 		SuperTrap(SuperTrap const& copy);
 		~SuperTrap();
 		SuperTrap& operator=(SuperTrap const& copy);
 
-		void getHitPoints();
-		void getEnergyPoints();
 		std::string getName() const;
 		
 		void rangedAttack(std::string const& target);
   		void meleeAttack(std::string const& target);
 
 	private:
+		SuperTrap();
 };
 
 #endif

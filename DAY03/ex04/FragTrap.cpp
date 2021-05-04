@@ -6,38 +6,45 @@
 */
 
 // DEFAULT
-FragTrap::FragTrap()
+FragTrap::FragTrap() : ClapTrap("")
 {
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& FRAG Magic constructor call" << std::endl;
 	m_hitPoints = 100;
 	m_maxHitPoints = 100;
 	m_energyPoints = 100;
 	m_maxEnergyPoints = 100;
 	m_level = 1;
-	m_name = "";
 	m_meleeAttackDamage = 30;
 	m_rangedAttackDamage = 20;
 	m_armorDamageReduction = 5;
 }
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& FRAG Magic constructor call" << std::endl;
 	m_hitPoints = 100;
 	m_maxHitPoints = 100;
 	m_energyPoints = 100;
 	m_maxEnergyPoints = 100;
 	m_level = 1;
-	m_name = name;
 	m_meleeAttackDamage = 30;
+	m_rangedAttackDamage = 20;
+	m_armorDamageReduction = 5;
+}
+
+FragTrap::FragTrap(int i) : ClapTrap("")
+{
+	i = 0;
+	m_hitPoints = 100;
+	m_maxHitPoints = 100;
 	m_rangedAttackDamage = 20;
 	m_armorDamageReduction = 5;
 }
 
 // COPY
-FragTrap::FragTrap(FragTrap const& copy)
+FragTrap::FragTrap(FragTrap const& copy) : ClapTrap(copy)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Copy constructor call" << std::endl;
-	*this = copy;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& FRAG Copy constructor call" << std::endl;
 }
 
 /*
@@ -46,7 +53,7 @@ FragTrap::FragTrap(FragTrap const& copy)
 
 FragTrap::~FragTrap()
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic destructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& FRAG Magic destructor call" << std::endl;
 }
 
 /*
@@ -56,16 +63,8 @@ FragTrap::~FragTrap()
 // ASSIGNATION
 FragTrap& FragTrap::operator=(FragTrap const& copy)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Assignation constructor call" << std::endl;
-	m_hitPoints = copy.m_hitPoints;
-	m_maxHitPoints = copy.m_maxHitPoints;
-	m_energyPoints = copy.m_energyPoints;
-	m_maxEnergyPoints = copy.m_maxEnergyPoints;
-	m_level = copy.m_level;
-	m_name = copy.m_name;
-	m_meleeAttackDamage = copy.m_meleeAttackDamage;
-	m_rangedAttackDamage = copy.m_rangedAttackDamage;
-	m_armorDamageReduction = copy.m_armorDamageReduction;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& FRAG Assignation constructor call" << std::endl;
+	ClapTrap::operator=(copy);
 	
 	return *this;
 }
@@ -73,16 +72,6 @@ FragTrap& FragTrap::operator=(FragTrap const& copy)
 /*
 ** MEMBER FUNCTIONS
 */
-
-void FragTrap::getHitPoints()
-{
-	std::cout << "=========> " << m_name << " has " << m_hitPoints << " hit points" << std::endl;
-}
-
-void FragTrap::getEnergyPoints()
-{
-	std::cout << "=========> " << m_name << " has " << m_energyPoints << " energy points" << std::endl;
-}
 
 std::string FragTrap::getName() const
 {

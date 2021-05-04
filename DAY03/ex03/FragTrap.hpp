@@ -16,10 +16,6 @@ class FragTrap : public ClapTrap
 		~FragTrap();
 		FragTrap& operator=(FragTrap const& copy);
 		
-		void getHitPoints();
-		void getEnergyPoints();
-		std::string getName() const;
-
 		void rangedAttack(std::string const& target);
 		void meleeAttack(std::string const& target);
 		void vaulthunter_dot_exe(std::string const & target); 

@@ -8,7 +8,7 @@
 // DEFAULT
 ScavTrap::ScavTrap()
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& SCAV Magic constructor call" << std::endl;
 	m_hitPoints = 100;
 	m_maxHitPoints = 100;
 	m_energyPoints = 50;
@@ -22,7 +22,7 @@ ScavTrap::ScavTrap()
 
 ScavTrap::ScavTrap(std::string name)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& SCAV Magic constructor call" << std::endl;
 	m_hitPoints = 100;
 	m_maxHitPoints = 100;
 	m_energyPoints = 50;
@@ -37,7 +37,7 @@ ScavTrap::ScavTrap(std::string name)
 // COPY
 ScavTrap::ScavTrap(ScavTrap const& copy)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Copy constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& SCAV Copy constructor call" << std::endl;
 	*this = copy;
 }
 
@@ -47,7 +47,7 @@ ScavTrap::ScavTrap(ScavTrap const& copy)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Magic destructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& SCAV Magic destructor call" << std::endl;
 }
 
 /*
@@ -57,7 +57,7 @@ ScavTrap::~ScavTrap()
 // ASSIGNATION
 ScavTrap& ScavTrap::operator=(ScavTrap const& copy)
 {
-	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& Assignation constructor call" << std::endl;
+	std::cout << "&&&&&&&&&&&&&&&&&&&&&&&&& SCAV Assignation constructor call" << std::endl;
 	m_hitPoints = copy.m_hitPoints;
 	m_maxHitPoints = copy.m_maxHitPoints;
 	m_energyPoints = copy.m_energyPoints;
@@ -75,16 +75,6 @@ ScavTrap& ScavTrap::operator=(ScavTrap const& copy)
 ** MEMBER FUNCTIONS
 */
 
-void ScavTrap::getHitPoints()
-{
-	std::cout << "=========> " << m_name << " has " << m_hitPoints << " hit points" << std::endl;
-}
-
-void ScavTrap::getEnergyPoints()
-{
-	std::cout << "=========> " << m_name << " has " << m_energyPoints << " energy points" << std::endl;
-}
-
 void ScavTrap::rangedAttack(std::string const& target)
 {
 	std::cout << "SCAVVVVV " << m_name << " attaque " << target << " a distance, causant " << m_rangedAttackDamage << " Points de degats !" << std::endl;
@@ -99,7 +89,7 @@ void ScavTrap::takeDamage(unsigned int amount)
 {
 	int damage;
 
-	if (amount > m_armorDamageReduction)
+	if (amount > (unsigned int)m_armorDamageReduction)
 	{
 		damage = amount - m_armorDamageReduction;
 		std::cout << "SCAVVVVV " << m_name << " takes damage and loses " << damage << " hit points" << std::endl;
