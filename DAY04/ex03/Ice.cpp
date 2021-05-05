@@ -14,7 +14,7 @@ Ice::Ice() : AMateria("ice")
 // COPY
 Ice::Ice(Ice const& copy) : AMateria("ice")
 {
-	_xp = copy.getXP();
+	this->m_xp = copy.getXP();
 }
 
 /*
@@ -35,7 +35,7 @@ Ice& Ice::operator=(Ice const& copy)
 {
 	if (this != &copy)
 	{
-		_xp = copy.getXP();
+		this->m_xp = copy.getXP();
 	}
 	return *this;
 }
@@ -46,11 +46,11 @@ Ice& Ice::operator=(Ice const& copy)
 
 AMateria* Ice::clone() const
 {
-	return (new Ice());
+	return (new Ice(*this));
 }
 
 void Ice::use(ICharacter& target)
 {
-	_xp += 10;
+	m_xp += 10;
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

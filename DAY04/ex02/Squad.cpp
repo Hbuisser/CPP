@@ -10,18 +10,27 @@
 */
 
 // DEFAULT
-Squad::Squad() : m_unitNbr(0)
+Squad::Squad()
 {
-	m_squadList = new squadList;
-	m_squadList->m_unit = nullptr;
-	m_squadList->m_next = nullptr;
+	this->m_unitNbr = 0;
+	this->m_squad = NULL;
 }
 
 // COPY
+// The main difference between them is that the copy constructor creates a separate 
+// memory block for the new object. But the assignment operator does not make new memory space. 
+// It uses the reference variable to point to the previous memory block.
+
+// If the variables of an object have been dynamically allocated then it is required 
+// to do a Deep Copy in order to create a copy of the object.
 Squad::Squad(Squad const& copy)
 {
-	*this = copy;
+	this->m_unitNbr = copy.m_unitNbr;
+	this->m_squad = new ISpaceMarine*[copy.m_unitNbr];
+	for (int i = 0; i < this->m_unitNbr; i++)
+		this->m_squad[i] = copy.getUnit(i)->clone();
 }
+
 
 /*
 ** DESTRUCTOR
@@ -29,15 +38,9 @@ Squad::Squad(Squad const& copy)
 
 Squad::~Squad()
 {
-	squadList *iter;
-
-	while (m_squadList != nullptr)
-	{
-		delete m_squadList->m_unit;
-		iter = m_squadList;
-		m_squadList = m_squadList->m_next;
-		delete iter;
-	}
+	for (int i = 0; i < this->m_unitNbr; i++)
+		delete (this->m_squad[i]);
+	delete (this->m_squad);
 }
 
 /*
@@ -45,25 +48,17 @@ Squad::~Squad()
 */
 
 // ASSIGNATION
-// deepcopy means a copy on another memory address
+// deepcopy means a copy on another memory address // dlete the precedent
 // https://www.youtube.com/watch?v=kiET23bMTic
 Squad& Squad::operator=(Squad const& copy)
 {
-	while (m_squadList != nullptr)
-	{
-		delete m_squadList->m_unit;
-		m_squadList = m_squadList->m_next;
-	}
-	m_squadList = new squadList;
-	m_squadList->m_unit = nullptr;
-	m_squadList->m_next = nullptr;
-	squadList *iter;
-	iter = copy.m_squadList;
-	while (iter != nullptr)
-	{
-		push(iter->m_unit->clone());
-		iter = iter->m_next;
-	}
+	for (int i = 0; i < this->m_unitNbr; i++)
+		delete (this->m_squad[i]);
+	delete this->m_squad;
+	this->m_unitNbr = copy.m_unitNbr;
+	this->m_squad = new ISpaceMarine*[copy.m_unitNbr];
+	for (int i = 0; i < this->m_unitNbr; i++)
+		this->m_squad[i] = copy.getUnit(i)->clone();
 	return (*this);
 }
 
@@ -73,72 +68,38 @@ Squad& Squad::operator=(Squad const& copy)
 
 int Squad::getCount() const
 {
-	return m_unitNbr;
+	return this->m_unitNbr;
 }
 
 ISpaceMarine* Squad::getUnit(int n) const
 {
-	int i = 0;
-	squadList *iter = m_squadList;
-
-	while (i < n && iter && iter->m_next)
-	{
-		iter = iter->m_next;
-		i++;
-	}
-	if (!iter)
-		return (nullptr);
-	return (iter->m_unit);
-}
-
-squadList *Squad::getLast()
-{
-	squadList *iter;
-
-	iter = m_squadList;
-	while (iter && iter->m_next)
-	{
-		iter = iter->m_next;
-	}
-	return (iter);
-}
-
-int Squad::onlyOnce(ISpaceMarine *a_marine)
-{
-	squadList *iter;
-
-	iter = m_squadList;
-	if (!a_marine)
-		return (0);
-	while (iter)
-	{
-		if (iter->m_unit == a_marine)
-			return (0);
-		iter = iter->m_next;
-	}
-	return (1);
+	if (n >= 0 && n <= this->m_unitNbr)
+		return (this->m_squad[n]);
+	return NULL;
 }
 
 int Squad::push(ISpaceMarine* a_marine)
 {
-	squadList	*iter;
+	int check = 0;
 
-	if (a_marine && Squad::onlyOnce(a_marine))
+	if (a_marine == NULL)
+		return this->m_unitNbr;
+	for (int i = 0; i < this->m_unitNbr; i++)
 	{
-		iter = Squad::getLast();
-		if (iter && iter->m_unit)
-		{
-			iter->m_next = new squadList;
-			iter = iter->m_next;
-			iter->m_unit = a_marine;
-			iter->m_next = nullptr;
-		}
-		else
-		{
-			m_squadList->m_unit = a_marine;
-			m_squadList->m_next = nullptr;
-		}
-		m_unitNbr++;
+		if (this->m_squad[i] == a_marine)
+			check = 1;
 	}
-	return (m_unitNbr);
+	if (check == 0)
+	{
+		ISpaceMarine **tmp = new ISpaceMarine*[this->m_unitNbr + 1];
+		for (int j = 0; j < this->m_unitNbr; j++)
+			tmp[j] = this->m_squad[j];
+		delete [] (m_squad);
+		tmp[this->m_unitNbr] = a_marine;
+		this->m_unitNbr += 1;
+		this->m_squad = tmp;
+	}
+	else
+		std::cout << "ISpaceMarine already in the squad" << std::endl;
+	return this->m_unitNbr;
 }

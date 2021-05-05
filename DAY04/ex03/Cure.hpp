@@ -13,7 +13,7 @@ class Cure : public AMateria
 	public:
 		Cure();
 		Cure(Cure const& copy);
-		~Cure();
+		virtual ~Cure();
 		Cure& operator=(Cure const& copy);
 
 		AMateria* clone() const;

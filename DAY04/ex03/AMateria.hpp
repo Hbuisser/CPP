@@ -13,7 +13,7 @@ class AMateria
 {
 	protected:
 		std::string 	m_type;
-		unsigned int 	_xp;
+		unsigned int 	m_xp;
 		
 	public:
 		AMateria(std::string const& type);

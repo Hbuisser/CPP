@@ -10,10 +10,9 @@
 class Character : public ICharacter
 {
 	public:
-		//Character();
 		Character(std::string name);
 		Character(Character const& copy);
-		~Character();
+		virtual ~Character();
 		Character& operator=(Character const& copy);
 
 		void equip(AMateria* m);
@@ -23,6 +22,7 @@ class Character : public ICharacter
 		std::string const& getName() const;
 
 	private:
+		Character();
 		std::string m_name;
 		AMateria 	*m_materia[4];
 

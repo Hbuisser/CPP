@@ -12,8 +12,9 @@ TacticalMarine::TacticalMarine()
 }
 
 // COPY
-TacticalMarine::TacticalMarine(TacticalMarine const&)
+TacticalMarine::TacticalMarine(TacticalMarine const& copy)
 {
+	(void)copy;
 	std::cout << "Tactical Marine ready for action !" << std::endl;
 }
 
@@ -47,10 +48,6 @@ TacticalMarine& TacticalMarine::operator=(TacticalMarine const& copy)
 
 ISpaceMarine* TacticalMarine::clone() const
 {
-	// ISpaceMarine *elem;
-
-	// elem = new TacticalMarine(*this);
-	// return (elem);
 	return (new TacticalMarine());
 }
 
