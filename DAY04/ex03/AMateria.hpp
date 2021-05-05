@@ -14,6 +14,7 @@ class AMateria
 	protected:
 		std::string 	m_type;
 		unsigned int 	m_xp;
+		AMateria();
 		
 	public:
 		AMateria(std::string const& type);

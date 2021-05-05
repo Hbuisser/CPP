@@ -6,6 +6,12 @@
 */
 
 // DEFAULT
+AMateria::AMateria()
+{
+	this->m_xp = 0;
+    this->m_type = "no_type";
+}
+
 AMateria::AMateria(std::string const& type) : m_type(type), m_xp(0)
 {
 
@@ -14,7 +20,8 @@ AMateria::AMateria(std::string const& type) : m_type(type), m_xp(0)
 // COPY
 AMateria::AMateria(AMateria const& copy)
 {
-	*this = copy;
+	this->m_xp = copy.m_xp;
+    this->m_type = copy.m_type;
 }
 
 /*
@@ -35,8 +42,8 @@ AMateria& AMateria::operator=(AMateria const& copy)
 {
 	if (this != &copy)
 	{
-		m_type = copy.m_type;
-		m_xp = copy.m_xp;
+		this->m_type = copy.m_type;
+		this->m_xp = copy.m_xp;
 	}
 	return *this;
 }
@@ -47,12 +54,12 @@ AMateria& AMateria::operator=(AMateria const& copy)
 
 std::string const& AMateria::getType() const
 {
-	return (m_type);
+	return (this->m_type);
 }
 
 unsigned int AMateria::getXP() const
 {
-	return (m_xp);
+	return (this->m_xp);
 }
 
 void AMateria::use(ICharacter& target)
