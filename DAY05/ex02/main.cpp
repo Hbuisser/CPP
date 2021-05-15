@@ -64,6 +64,8 @@ void	test_form(Bureaucrat bob, Form &form)
 	{
 		std::cout << e.what() << std::endl;;
 	}
+	std::cout << "_______Bob sign the form" << std::endl;
+	form.beSigned(bob);
 	std::cout << "_______Can't be executed because grade is too low" << std::endl;
 	bob.setGrade(150);
 	try
@@ -102,7 +104,7 @@ int main()
 	std::cout << "____________________________Robotomy test______________" << std::endl;
 	test_form(bob, r_form);
 
-	std::cout << "____________________________Shrubbery test______________" << std::endl;
+	std::cout << "____________________________Presidential test______________" << std::endl;
 	test_form(bob, p_form);
 
     return (0);

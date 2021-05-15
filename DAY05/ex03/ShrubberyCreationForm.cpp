@@ -7,7 +7,7 @@
 
 // DEFAULT
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const& target) : 
-m_target(target), Form("ShrubberyCreationForm", 145, 137)
+Form("ShrubberyCreationForm", 145, 137), m_target(target)
 {
 	
 }
@@ -69,8 +69,19 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 			fileFlux << " /\\*\\/\\*\\/\\/\\ " << std::endl; 
 			fileFlux << "/\\O\\/\\/*/\\/O/\\" << std::endl; 
 			fileFlux << "      ||      " << std::endl; 
+			fileFlux << "      ||      " << std::endl;
+			fileFlux << "      ||      " << std::endl;
+			fileFlux << "              " << std::endl;
+			fileFlux << "      /\\      " << std::endl; 
+			fileFlux << "     /\\*\\     " << std::endl; 
+			fileFlux << "    /\\O\\*\\    " << std::endl; 
+			fileFlux << "   /*/\\/\\/\\   " << std::endl; 
+			fileFlux << "  /\\O\\/\\*\\/\\  " << std::endl; 
+			fileFlux << " /\\*\\/\\*\\/\\/\\ " << std::endl; 
+			fileFlux << "/\\O\\/\\/*/\\/O/\\" << std::endl; 
 			fileFlux << "      ||      " << std::endl; 
 			fileFlux << "      ||      " << std::endl; 
+			fileFlux << "      ||      " << std::endl;
 		}
 	}
 }

@@ -66,8 +66,7 @@ void	test_form(Bureaucrat bob, Form &form)
 	{
 		std::cout << e.what() << std::endl;;
 	}
-	std::cout << "_______Bureaucrat signs" << std::endl;
-	// can't have the name..................................................
+	std::cout << "_______Bob sign the form" << std::endl;
 	form.beSigned(bob);
 	std::cout << "_______Can't be executed because grade is too low" << std::endl;
 	bob.setGrade(150);
@@ -130,19 +129,19 @@ int main()
 	RobotomyRequestForm		r_form("TheR");
 	PresidentialPardonForm 	p_form("TheP");
 
-    std::cout << "__________Bureaucrat test______________" << std::endl;
+    std::cout << "_______________________________Bureaucrat test_____________" << std::endl;
     test_bureaucrat(r_form);
 
-    std::cout << "__________Shrubbery test______________" << std::endl;
+    std::cout << "_______________________________Shrubbery test______________" << std::endl;
 	test_form(bob, s_form);
 
-	std::cout << "__________Robotomy test______________" << std::endl;
+	std::cout << "_______________________________Robotomy test_______________" << std::endl;
 	test_form(bob, r_form);
 
-	std::cout << "__________Shrubbery test______________" << std::endl;
+	std::cout << "_______________________________Shrubbery test______________" << std::endl;
 	test_form(bob, p_form);
 
-	std::cout << "__________Intern test______________" << std::endl;
+	std::cout << "_______________________________Intern test_________________" << std::endl;
     test_intern();
 
     return (0);

@@ -14,7 +14,7 @@ Intern::Intern()
 // COPY
 Intern::Intern(Intern const& copy)
 {
-	
+	*this = copy;
 }
 
 /*

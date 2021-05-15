@@ -22,9 +22,9 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name)
 }
 
 // COPY
-Bureaucrat::Bureaucrat(Bureaucrat const& copy)
+Bureaucrat::Bureaucrat(Bureaucrat const& copy) : m_name(copy.m_name)
 {
-	*this = copy;
+	this->m_grade = 150;
 }
 
 /*

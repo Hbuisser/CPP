@@ -22,9 +22,9 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name)
 }
 
 // COPY
-Bureaucrat::Bureaucrat(Bureaucrat const& copy)
+Bureaucrat::Bureaucrat(Bureaucrat const& copy) : m_name(copy.m_name)
 {
-	*this = copy;
+	this->m_grade = 150;
 }
 
 /*
@@ -102,7 +102,6 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
 void Bureaucrat::signForm(bool bo, Form & f) const
 {
 	if (bo)
-		//f.beSigned();
 		std::cout << getName() << " signs " << f.getName() << std::endl;
 	else
 		std::cout << getName() << " cant sign " << f.getName() << std::endl;

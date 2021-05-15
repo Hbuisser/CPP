@@ -7,7 +7,7 @@
 
 // DEFAULT
 RobotomyRequestForm::RobotomyRequestForm(std::string const& target) :
-m_target(target), Form("RobotomyRequestForm", 72, 45)
+Form("RobotomyRequestForm", 72, 45), m_target(target)
 {
 	
 }
