@@ -6,6 +6,11 @@
 */
 
 // DEFAULT
+Bureaucrat::Bureaucrat() : m_name("No_name")
+{
+	this->m_grade = 150;
+}
+
 Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name)
 {
 	if (grade < 1)
@@ -17,9 +22,9 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name)
 }
 
 // COPY
-Bureaucrat::Bureaucrat(Bureaucrat const& copy)
+Bureaucrat::Bureaucrat(Bureaucrat const& copy) : m_name(copy.m_name)
 {
-	*this = copy;
+	this->m_grade = copy.m_grade;
 }
 
 /*
@@ -40,7 +45,8 @@ Bureaucrat& Bureaucrat::operator=(Bureaucrat const& copy)
 {
 	if (this != &copy)
 	{
-		setGrade(copy.getGrade());
+		(std::string)this->m_name = copy.m_name;
+		this->m_grade = copy.m_grade;
 	}
 	return *this;
 }
@@ -93,6 +99,8 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Grade is lower than 1");
 }
+
+////////////////////////////////////////////////////////////////////////////////////////
 
 void operator<<(std::ostream &stream, Bureaucrat const &b)
 {

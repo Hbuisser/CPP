@@ -6,6 +6,11 @@
 */
 
 // DEFAULT
+Bureaucrat::Bureaucrat() : m_name("No_name")
+{
+	this->m_grade = 150;
+}
+
 Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name)
 {
 	if (grade < 1)

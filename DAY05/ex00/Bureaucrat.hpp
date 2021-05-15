@@ -9,7 +9,8 @@
 class Bureaucrat
 {
 	public:
-		Bureaucrat(const std::string name = "Default", int grade = 150);
+		Bureaucrat();
+		Bureaucrat(const std::string name, int grade);
 		Bureaucrat(Bureaucrat const& copy);
 		~Bureaucrat();
 		Bureaucrat& operator=(Bureaucrat const& copy);
@@ -32,7 +33,7 @@ class Bureaucrat
 				const char *what() const throw();
 		};
 
-	protected:
+	private:
 		const std::string 	m_name;
 		int					m_grade;
 

@@ -67,7 +67,5 @@ int main()
     {
         std::cerr << "ERROR : " << e.what() << std::endl;
     }
-    delete bob;
-    delete boby;
     return (0);
 }
