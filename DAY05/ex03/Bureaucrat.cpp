@@ -6,9 +6,8 @@
 */
 
 // DEFAULT
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat() : m_name("default")
 {
-	m_name = "default";
 	m_grade = 150;
 }
 

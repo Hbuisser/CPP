@@ -26,7 +26,7 @@ class Bureaucrat
 		void addGrade(void);
 		void minGrade(void);
 
-		void signForm(bool bo, Form const& f) const;
+		void signForm(bool bo, Form & f) const;
 		void executeForm(Form const& form) const;
 
 		class GradeTooHighException : public std::exception
@@ -41,7 +41,7 @@ class Bureaucrat
 		};
 
 	protected:
-		std::string 		m_name;
+		const std::string 		m_name;
 		int					m_grade;
 
 };

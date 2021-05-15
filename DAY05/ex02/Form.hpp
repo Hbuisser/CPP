@@ -15,7 +15,7 @@ class Form
 		Form();
 		Form(std::string name = "Default form", int a_grade_sign = 150, int a_grade_exec = 150);
 		Form(Form const& copy);
-		~Form();
+		virtual ~Form();
 		Form& operator=(Form const& copy);
 
 		const std::string getName(void) const;

@@ -7,7 +7,7 @@
 
 // DEFAULT
 PresidentialPardonForm::PresidentialPardonForm(std::string const& target) :
-m_target(target), Form("PresidentialPardonForm", 145, 137)
+Form("PresidentialPardonForm", 145, 137), m_target(target)
 {
 	
 }
