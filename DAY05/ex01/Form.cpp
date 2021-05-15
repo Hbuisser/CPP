@@ -6,7 +6,7 @@
 */
 
 // DEFAULT
-Form::Form() : m_name("No_name"), m_grade_sign(1), m_grade_exec(1), m_signed(false)
+Form::Form() : m_name("No_name"), m_signed(false), m_grade_sign(1), m_grade_exec(1)
 {
 
 }
@@ -23,7 +23,7 @@ m_name(name), m_grade_sign(a_grade_sign), m_grade_exec(a_grade_exec)
 
 // COPY
 Form::Form(Form const& copy) :
-m_name(copy.m_name), m_grade_sign(copy.m_grade_sign), m_grade_exec(copy.m_grade_exec), m_signed(copy.m_signed)
+m_name(copy.m_name), m_signed(copy.m_signed), m_grade_sign(copy.m_grade_sign), m_grade_exec(copy.m_grade_exec)
 {
 	
 }
@@ -46,7 +46,7 @@ Form& Form::operator=(Form const& copy)
 {
 	if (this != &copy)
 	{
-		
+		m_signed = copy.m_signed;
 	}
 	return *this;
 }
