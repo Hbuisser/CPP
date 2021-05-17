@@ -29,6 +29,7 @@ void *serialize(void)
 {
     Data *raw;
     raw = new Data;
+
     raw->s1 = createString();
     raw->n = rand();
     raw->s2 = createString();
@@ -36,6 +37,8 @@ void *serialize(void)
     return (static_cast<void *>(raw));
 }
 
+// reinterpret_cast guarantees that if you cast a pointer to a different type, 
+// and then reinterpret_cast it back to the original type, you get the original value
 Data *deserialize(void *raw)
 {
     return (reinterpret_cast<Data *>(raw));

@@ -19,3 +19,11 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+test:
+	./convert 0
+	./convert nan
+	./convert 42.0f
+	./convert c
+	./convert 42
+
