@@ -10,13 +10,14 @@
 
 
 template<typename T>
-const int easyfind(const T &array, int n)
+int easyfind(const T &array, int n)
 {
     typename T::const_iterator   i;
+
     if (array.empty())
         throw std::exception();
     i = std::find(array.begin(), array.end(), n);
-    if (i == array.end())
+    if (i == array.end())  // not found anything
         throw std::exception();
     return (*i);
 }
