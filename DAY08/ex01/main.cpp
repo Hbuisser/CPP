@@ -1,15 +1,6 @@
 #include <iostream>
 #include "span.hpp"
 
-class Generate
-{
-public:
-	int operator()()
-	{
-		return (rand() % 100);
-	}
-};
-
 int main(void)
 {
 	{
@@ -44,24 +35,8 @@ int main(void)
 		for (std::vector<int>::iterator i = f.getList().begin(); i != f.getList().end(); i++)
 			std::cout << *i << " ";
 		std::cout << std::endl;
-		std::cout << "short span: " << f.shortestSpan() << " long span: " << f.longestSpan() << std::endl;
-	}
-	{
-		std::cout << "____________generate class" << std::endl;
-
-		Span f(6);
-		std::vector<int> v(6, 0);
-		generate(v.begin(), v.end(), Generate());
-		f.addNumber(v.begin(), v.end());
-		std::cout << "vector Generated: ";
-		for (std::vector<int>::iterator i = v.begin(); i != v.end(); i++)
-			std::cout << *i << " ";
-		std::cout << std::endl;
-		std::cout << "arr: ";
-		for (std::vector<int>::iterator it = f.getList().begin(); it != f.getList().end(); it++)
-			std::cout << *it << " ";
-		std::cout << std::endl;
-		std::cout << "short span: " << f.shortestSpan() << " long span: " << f.longestSpan() << std::endl;
+		std::cout << "short span: " << f.shortestSpan() << std::endl;
+		std::cout << "long span: " << f.longestSpan() << std::endl;
 	}
 	{
 		std::cout << "__________________Given main" << std::endl;
@@ -71,8 +46,8 @@ int main(void)
 		sp.addNumber(17);
 		sp.addNumber(9);
 		sp.addNumber(11);
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
+		std::cout << "short span: " << sp.shortestSpan() << std::endl;
+		std::cout << "long span: " << sp.longestSpan() << std::endl;
 	}
 	return (0);
 }

@@ -16,7 +16,7 @@ Span::Span(Span const& copy) : m_max(copy.m_max)
 {
 	if (!m_list.empty())
 		m_list.erase(m_list.begin(), m_list.end());
-	for (int i = 0; i < copy.m_list.size(); i++)
+	for (unsigned long i = 0; i < copy.m_list.size(); i++)
 		m_list.push_back(m_list[i]);
 }
 
@@ -41,7 +41,7 @@ Span& Span::operator=(Span const& copy)
 		m_max = copy.m_max;
 		if (!m_list.empty())
 			m_list.erase(m_list.begin(), m_list.end());
-		for (int i = 0; i < copy.m_list.size(); i++)
+		for (unsigned long i = 0; i < copy.m_list.size(); i++)
 			m_list.push_back(m_list[i]);
 	}
 	return *this;
@@ -53,7 +53,7 @@ Span& Span::operator=(Span const& copy)
 
 void Span::addNumber(unsigned int n)
 {
-	if (m_list.size() == m_max)
+	if (m_list.size() == static_cast<unsigned long>(m_max))
 		throw std::exception();
 	m_list.push_back(n);
 	sort(m_list.begin(), m_list.end());
@@ -63,7 +63,7 @@ int Span::shortestSpan()
 {
 	if (m_list.empty() || m_list.size() == 1)
 		throw std::exception();
-	int tmp = *m_list.end() - 1;
+	int tmp = *(m_list.end() - 1);
 	for (std::vector<int>::const_iterator i = std::next(m_list.begin()); i != m_list.end(); i++)
 	{
 		if (abs(*(i - 1) - *i) < tmp)
@@ -76,7 +76,7 @@ int Span::longestSpan()
 {
 	if (m_list.empty() || m_list.size() == 1)
 		throw std::exception();
-	int tmp = abs(m_list.front() - m_list.back());
+	int tmp = abs(m_list.front() - m_list.back()); // Ok because the array is sorted
 	return (tmp);
 }
 
